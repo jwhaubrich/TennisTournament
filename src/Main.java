@@ -36,21 +36,32 @@ Objects to create:
  */
 
 import java.util.Scanner;
-
+/*
+Objects to create:
+Bracket of teams
+Individual match
+individual teams
+referee object to create matches between teams and assign winning scores
+ */
 public class Main {
+    //static int numberOfTeamsGlob = 0; //making this static so that other classes can use this field
+    // guess the above doesn't work
 
     public static void main(String[] args) {
         int numberOfTeams = 0;
         System.out.println("Welcome to the Tennis Tournament Implementation \n");
-        System.out.println("How many teams are playing? Must be even to play: ");
+        System.out.println("How many teams are playing? *Must be even to play*: ");
+        //can check for evenness
+        /*
         Scanner input = new Scanner(System.in);
 
         try {
             numberOfTeams = Integer.parseInt(input.nextLine());
         } catch (Exception e) {
-            System.out.println("You've found an exception!\n");
-        }
-
-        TeamsCreation.createTeams(numberOfTeams);
+            System.out.println("Not an integer\n");
+        }*/
+        TeamsCreation.createTeams(2);
+        Referee.createMatches(2);
+        TournamentBracket.tBracket.get(1);
     }
 }

@@ -4,31 +4,44 @@ import java.util.Scanner;
 
 public class TeamsCreation {
 
-    public static void createTeams(int numberOfTeams){
-        ArrayList[] teamsList = new ArrayList<>(); //create list of all possible teams
+    static ArrayList<Team> teamsList = new ArrayList<>();
+
+    public static void createTeams(int numberOfTeams) {
+        /*create list of all possible teams
+        with ArrayList we don't need to give it a specific size
+        */
         Scanner input = new Scanner(System.in);
-        int numberOfMen;
-        int numberOfWomen;
+        int numberOfMen = 0;
+        int numberOfWomen = 0;
+        int playerCount = 0;
+        int teamNumber;
 
-        for(int t = 1; numberOfTeams > t ; t++ ){
-            System.out.println("For team " + t + " how many men and women?");
-            System.out.println("Number of men?: ");
-            try{
+        /*
+        for (teamNumber = 1; numberOfTeams >= teamNumber; teamNumber++) {
+            System.out.println("For Team " + teamNumber + " what's the total number of players (2-4): ");
+            //check to make sure that men and women add up to the number provided
+            try {
+                playerCount = Integer.parseInt(input.nextLine());
+            } catch (Exception e) {
+                System.out.println("Not a number");
+            }
+            System.out.println("Total number of men?: ");
+            try {
                 numberOfMen = Integer.parseInt(input.nextLine());
+            } catch (Exception e) {
+                System.out.println("Not a number");
             }
-            catch(Exception e){
-                System.out.println("Exception");
-            }
-            System.out.println("Number of men?: ");
-            try{
+            System.out.println("Total number of women?: ");
+            try {
                 numberOfWomen = Integer.parseInt(input.nextLine());
+            } catch (Exception e) {
+                System.out.println("Not a number");
             }
-            catch(Exception e){
-                System.out.println("Exception");
-            }
+            */
+            //teamsList.add(new Team(playerCount, numberOfMen, numberOfWomen, teamNumber));
 
-
+            teamsList.add(new Team(8, 69, 77, 1));
+            teamsList.add(new Team(2, 9, 66, 2));
 
         }
     }
-}
