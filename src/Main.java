@@ -37,6 +37,17 @@ Objects to create:
 
 import java.util.Scanner;
 /*
+Things to do:
+Watch the video on constructors again
+Watch the video on arrays and arraylists again:
+- syntax between int[] or Integer[]
+- advantages or disadvantages of using int[] vs Integer[]
+Does arrayList care about indexes?
+ */
+
+
+
+/*
 Objects to create:
 Bracket of teams
 Individual match
@@ -51,7 +62,7 @@ public class Main {
         int numberOfTeams = 0;
         System.out.println("Welcome to the Tennis Tournament Implementation \n");
         System.out.println("How many teams are playing? *Must be even to play*: ");
-        //can check for evenness
+        //can check for evenness above
         /*
         Scanner input = new Scanner(System.in);
 
@@ -60,8 +71,25 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Not an integer\n");
         }*/
-        TeamsCreation.createTeams(2);
-        Referee.createMatches(2);
-        TournamentBracket.tBracket.get(1);
+
+        TeamsCreation.teamsList.add(new Team(8, 69, 77, 1));
+        TeamsCreation.teamsList.add(new Team(2, 9, 66, 2));
+        TeamsCreation.teamsList.add(new Team(4, 2, 2, 3));
+        TeamsCreation.teamsList.add(new Team(6, 3, 9, 4));
+
+
+        System.out.println("Testing that I'm able to add new teams to the teamsList");
+        System.out.println("TeamList size: ");
+        System.out.println(TeamsCreation.teamsList.size());
+        System.out.println("Team numbers of each time in the list: ");
+        System.out.println(TeamsCreation.teamsList.get(0).getTeamNumber()); //get always indexes at 0!
+        System.out.println(TeamsCreation.teamsList.get(1).getTeamNumber());
+        System.out.println(TeamsCreation.teamsList.get(2).getTeamNumber());
+        System.out.println(TeamsCreation.teamsList.get(3).getTeamNumber());
+        System.out.println("FINISHED TESTING FUNCTIONALITY WITH ADDING TEAMS TO TEAMSLIST\n");
+
+        Referee.createMatches(4);
+
+
     }
 }

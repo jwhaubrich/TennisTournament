@@ -1,20 +1,23 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class TeamsCreation {
 
     static ArrayList<Team> teamsList = new ArrayList<>();
 
-    public static void createTeams(int numberOfTeams) {
+    public static void createTeams(int numberOfTeams){
         /*create list of all possible teams
         with ArrayList we don't need to give it a specific size
         */
+
         Scanner input = new Scanner(System.in);
         int numberOfMen = 0;
         int numberOfWomen = 0;
         int playerCount = 0;
         int teamNumber;
+
+        //adding my own teams so that I can test the functionality
+
 
         /*
         for (teamNumber = 1; numberOfTeams >= teamNumber; teamNumber++) {
@@ -37,11 +40,8 @@ public class TeamsCreation {
             } catch (Exception e) {
                 System.out.println("Not a number");
             }
-            */
-            //teamsList.add(new Team(playerCount, numberOfMen, numberOfWomen, teamNumber));
 
-            teamsList.add(new Team(8, 69, 77, 1));
-            teamsList.add(new Team(2, 9, 66, 2));
+            teamsList.add(new Team(playerCount, numberOfMen, numberOfWomen, teamNumber));*/
 
         }
     }

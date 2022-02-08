@@ -4,11 +4,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Team {
-    private int menCount; //how many men are on the team
-    private int womenCount; //how many women are on the team
-    private int playerCount; //the total number of players
-    private int teamNumber; //the team's specific number
+    private int menCount; //number of men on the team
+    private int womenCount; //number of women on the team
+    private int playerCount; //total number of players on the team
+    private int teamNumber; //unique team number
 
+    //the below constructor is used to implement default values
     public Team(){
         this(0, 0, 0, 0);
     }
