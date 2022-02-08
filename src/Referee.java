@@ -10,14 +10,12 @@ public class Referee {
     - I'm using a list of numbers and removing those numbers from the list. Will those numbers always relate
     back to the team numbers or is it possible for this to get offtrack somehow?
         - the arrayList scales dynamically...
-
      */
 
     public static void createMatches(int numberOfTeams) {
-        System.out.println("**********Inside Referee**********");
 
         int teamCounter = numberOfTeams;
-        int matchNumber = 1;
+        int matchNumber = 0; //idea was to have matchNumber start at 1, but for some reason the program doesn't like that...
         int lowestNumber = 0;
         //signifies that there's at least one team, the arrayList indexes at 0
         int highestNumber = numberOfTeams - 1;
@@ -32,10 +30,9 @@ public class Referee {
         for (int count = 0; highestNumber >= count; count++) {
             teamsLeft.add(count, count);
         }
-        System.out.println("Size of teams list is after it's been created: ");
-        System.out.println(teamsLeft); //see how big the list is
 
         //counts down teamCounter until there are no more teams left to make a match
+        //there's a BUG in this code that is setting teams to play more than once
         while (teamCounter != 0) {
 
             repeatRandSelect = 1; //identifier for if the two random number needs to be chosen again (they're the same)
@@ -44,22 +41,14 @@ public class Referee {
 
             randomTeamSelect = (int) ((Math.random() * (teamsLeft.size() - lowestNumber)) + lowestNumber);
 
-            while(repeatRandSelect == 1) { //this loop will run if the second random number needs to be selected again
+            while(repeatRandSelect == 1) { //this loop will run regardless because the repeatRandSelect is checked 1 above
 
-                if (randomTeamSelect != randomNum1) {
+                if (randomTeamSelect != randomNum1) { //if will run only if the first random num and second are not equal
                     randomNum2 = randomTeamSelect;
-
-                    System.out.println("random number 1; ");
-                    System.out.println(randomNum1);
-                    System.out.println("random number 2");
-                    System.out.println(randomNum2);
 
                     //adding teams to a bracket, adding teams to match object
                     TournamentBracket.tBracket.add(new Match(TeamsCreation.teamsList.get(randomNum1), TeamsCreation.teamsList.get(randomNum2), matchNumber));
                     matchNumber++;
-
-                    System.out.println("Teams list before we remove the numbers: ");
-                    System.out.println(teamsLeft);
 
                     //the below if and else if are for removing the biggest number first to avoid out of bounce exceptions
                     if(randomNum1 > randomNum2){
@@ -71,8 +60,6 @@ public class Referee {
                         teamsLeft.remove(randomNum1);
                     }
 
-                    System.out.println("Teams list after we remove the two numbers: ");
-                    System.out.println(teamsLeft);
 
                     //once this if has run successfully, sets the repeat identifier to 0 to break out of while loop
                     repeatRandSelect= 0;
@@ -83,7 +70,21 @@ public class Referee {
                 }
             }
         }
+        assignScoresAndWinners(matchNumber);
+    }
+
+    public static void assignScoresAndWinners(int totalMatches){
+        int matchCounter;
+        int roundCounter = 1;
+
+        System.out.println("Current tournament bracket: ");
+        System.out.println("Round: "+roundCounter);
+
+        for(matchCounter = 0; totalMatches>matchCounter; matchCounter++ ){
+            System.out.println("Match: "+matchCounter+" Team:"+TournamentBracket.tBracket.get(matchCounter).getMyTeam1().getTeamNumber()
+                    +" versus Team:" + TournamentBracket.tBracket.get(matchCounter).getMyTeam2().getTeamNumber());
+        }
+
 
     }
 }
-

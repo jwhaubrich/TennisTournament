@@ -11,8 +11,8 @@ public class Match {
     private int finalScore;
     private int teamWinner;
     private int matchNumber;
-    Team myTeam1;
-    Team myTeam2;
+    private Team myTeam1;
+    private Team myTeam2;
 
     public Match (int finalScore, int teamWinner){
         this.finalScore = finalScore;

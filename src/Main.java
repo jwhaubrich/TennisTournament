@@ -55,13 +55,14 @@ individual teams
 referee object to create matches between teams and assign winning scores
  */
 public class Main {
-    //static int numberOfTeamsGlob = 0; //making this static so that other classes can use this field
-    // guess the above doesn't work
+    /*
+
+     */
 
     public static void main(String[] args) {
         int numberOfTeams = 0;
-        System.out.println("Welcome to the Tennis Tournament Implementation \n");
-        System.out.println("How many teams are playing? *Must be even to play*: ");
+        //System.out.println("Welcome to the Tennis Tournament Implementation \n");
+        //System.out.println("How many teams are playing? *Must be even to play*: ");
         //can check for evenness above
         /*
         Scanner input = new Scanner(System.in);
@@ -76,20 +77,12 @@ public class Main {
         TeamsCreation.teamsList.add(new Team(2, 9, 66, 2));
         TeamsCreation.teamsList.add(new Team(4, 2, 2, 3));
         TeamsCreation.teamsList.add(new Team(6, 3, 9, 4));
+        TeamsCreation.teamsList.add(new Team(4, 2, 2, 5));
+        TeamsCreation.teamsList.add(new Team(6, 3, 9, 6));
 
 
-        System.out.println("Testing that I'm able to add new teams to the teamsList");
-        System.out.println("TeamList size: ");
-        System.out.println(TeamsCreation.teamsList.size());
-        System.out.println("Team numbers of each time in the list: ");
-        System.out.println(TeamsCreation.teamsList.get(0).getTeamNumber()); //get always indexes at 0!
-        System.out.println(TeamsCreation.teamsList.get(1).getTeamNumber());
-        System.out.println(TeamsCreation.teamsList.get(2).getTeamNumber());
-        System.out.println(TeamsCreation.teamsList.get(3).getTeamNumber());
-        System.out.println("FINISHED TESTING FUNCTIONALITY WITH ADDING TEAMS TO TEAMSLIST\n");
-
-        Referee.createMatches(4);
-
+        Referee.createMatches(6);
+        //Referee.assignScoresAndWinners();
 
     }
 }
