@@ -3,10 +3,8 @@ import lombok.Setter;
 
 @Setter
 @Getter
+//match constructor
 public class Match {
-    /*
-    - should I store the actual team objects from the ArrayList in each match object? Is that possible?
-     */
 
     private int finalScore;
     private int teamWinner;

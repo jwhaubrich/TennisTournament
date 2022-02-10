@@ -5,59 +5,22 @@ The system should allow referees to create matches and enter scores for each mat
 fans to view the entered results.  The basic concepts seen will be evaluated, it is not necessary
 to build databases or APIS or user interface (data entered by console is allowed).
 
-Flow:
-    1. Welcome to the Tennis Tournament Implementation
-    2. How many teams are there? Must be even to play.
-        - for each team, ask the user how many men and women up to 4 participants
-    4. The referee has randomly created matches between teams and entered scores for each match
-    5. Print out matches for the user to select to find the score.
-
-
-Objects to create:
-1. Tennis tournament itself
-    - will be used to store the individual matches (1, 2, 3, 4, 5) between teams and the result of the match
-    - fields:
-    - methods:
-2. Match:
-    - consists of one team versus another team
-    - fields:
-    - methods:
-3.Team:
-    - consists of random number of men
-    - consists of random number of women
-3. Referee:
-    - Referees create the matches between teams
-    - fields:
-    - methods:
-4. Fan view:
-    - fields
-    - methods:
-
+Work Log:
+1. Teams Object is created with constructors for which each team should have
+2. TeamsCreation Class is created to create list of all possible teams entered in by the user
+    - functionality to create the teams, store them, and recall information located within them
+3. Match object is created with constructors with which each match should have
+4. MatchStoring Object is created to create matches between teams by taking random number from referee
+    - functionality includes matching two teams together and storing it within a match object along with the match number
  */
 
 import java.util.Scanner;
-/*
-Things to do:
-Watch the video on constructors again
-Watch the video on arrays and arraylists again:
-- syntax between int[] or Integer[]
-- advantages or disadvantages of using int[] vs Integer[]
-Does arrayList care about indexes?
- */
 
 
-
-/*
-Objects to create:
-Bracket of teams
-Individual match
-individual teams
-referee object to create matches between teams and assign winning scores
- */
 public class Main {
-    /*
 
-     */
+
+
 
     public static void main(String[] args) {
         int numberOfTeams = 0;
@@ -73,15 +36,12 @@ public class Main {
             System.out.println("Not an integer\n");
         }*/
 
-        TeamsCreation.teamsList.add(new Team(8, 69, 77, 1));
-        TeamsCreation.teamsList.add(new Team(2, 9, 66, 2));
-        TeamsCreation.teamsList.add(new Team(4, 2, 2, 3));
-        TeamsCreation.teamsList.add(new Team(6, 3, 9, 4));
-        TeamsCreation.teamsList.add(new Team(4, 2, 2, 5));
-        TeamsCreation.teamsList.add(new Team(6, 3, 9, 6));
 
-
+        TeamsCreation.createTeams(6);
         Referee.createMatches(6);
+        //System.out.println("Printing out the first team from the matchArrayList");
+        //System.out.println(MatchStoring.matchArrayList.get(0).getMatchNumber()); //remember that the FIRST match is 0, index on 0
+        //System.out.println("Getting back to main?");
         //Referee.assignScoresAndWinners();
 
     }

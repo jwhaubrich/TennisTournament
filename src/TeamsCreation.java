@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//manual teams creation, created by the user
+//stores the teams created in an ArrayList
+
 public class TeamsCreation {
 
     static ArrayList<Team> teamsList = new ArrayList<>();
 
     public static void createTeams(int numberOfTeams){
-        /*create list of all possible teams
-        with ArrayList we don't need to give it a specific size
+        /*create list of all possible teams with an ArrayList
         */
 
         Scanner input = new Scanner(System.in);
@@ -15,9 +17,6 @@ public class TeamsCreation {
         int numberOfWomen = 0;
         int playerCount = 0;
         int teamNumber;
-
-        //adding my own teams so that I can test the functionality
-
 
         /*
         for (teamNumber = 1; numberOfTeams >= teamNumber; teamNumber++) {
@@ -43,5 +42,23 @@ public class TeamsCreation {
 
             teamsList.add(new Team(playerCount, numberOfMen, numberOfWomen, teamNumber));*/
 
+        //adding my own teams so that I can test the functionality
+        //functionality below works
+
+        teamsList.add(new Team(8, 69, 77, 1));
+        teamsList.add(new Team(2, 9, 66, 2));
+        teamsList.add(new Team(4, 2, 2, 3));
+        teamsList.add(new Team(6, 3, 9, 4));
+        teamsList.add(new Team(4, 2, 2, 5));
+        teamsList.add(new Team(6, 3, 9, 6));
+
+        /*System.out.println("Inside TeamsCreation. Testing functionality: ");
+        System.out.println(teamsList.get(0).getWomenCount());
+        System.out.println(teamsList.get(1).getWomenCount());
+        System.out.println(teamsList.get(2).getTeamNumber());
+        System.out.println(teamsList.get(3).getTeamNumber());
+        System.out.println(teamsList.get(4).getTeamNumber());
+        System.out.println(teamsList.get(5).getTeamNumber());
+*/
         }
     }
