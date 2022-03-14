@@ -8,6 +8,7 @@ public class IndividualMatch {
     private IndividualTeam teamTwo;
     private int winningTeam;
     private int winningScore;
+    private int matchNumber;
 
     public IndividualMatch(IndividualTeam newTeamOne, IndividualTeam newTeamTwo){
         this.teamOne = newTeamOne;

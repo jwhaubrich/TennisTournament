@@ -7,6 +7,7 @@ public class IndividualTeam {
     private int numberOfIndividuals;
     private int numberOfMales;
     private int numberOfFemales;
+    private int finalScore;
 
     public IndividualTeam(int newTeamNumber){
         this.teamNumber = newTeamNumber;

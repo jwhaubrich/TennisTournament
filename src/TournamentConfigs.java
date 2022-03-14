@@ -2,12 +2,11 @@ import java.util.Scanner;
 
 public class TournamentConfigs {
     private static int totalNumberOfTeams;
-    private static int totalPlayersOnTeam = 0;
+    private static int totalPlayersOnTeam;
     static Scanner input = new Scanner(System.in);
 
 
     public static void setNumberOfTeams(){
-        //int totalNumberOfTeams = 0;
 
         int totalTeamCheck = 0;
 
@@ -27,17 +26,29 @@ public class TournamentConfigs {
                 totalNumberOfTeams = 0;
             }
         }
+
     }
 
     public static void setNumberOfPlayersOnTeam(){
-        System.out.println("Will this tournament be for 2 or 4 player teams?: ");
+        int playersPerTeamCheck = 0;
 
-        if (input.hasNextInt()) {
-                totalPlayersOnTeam = Integer.parseInt(input.nextLine());
+        while(playersPerTeamCheck != 1 || totalNumberOfTeams==0) {
+            System.out.println("Will this tournament be for 2 or 4 player teams?: ");
+
+            try {
+                totalPlayersOnTeam = Integer.parseInt((input.nextLine()));
+            } catch (NumberFormatException e) {
+                System.out.println("Not a number!\n");
+            }
+
+            if (totalPlayersOnTeam % 2 == 0) {
+                playersPerTeamCheck = 1;
             } else {
-                System.out.println("Not a number.");
+                System.out.println("***Warning***: Please enter an even number.\n");
+                playersPerTeamCheck = 0;
             }
         }
+    }
 
     public static int getTotalPlayersOnTeam(){
         return totalPlayersOnTeam;
