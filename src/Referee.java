@@ -41,13 +41,13 @@ public class Referee {
         for(int i = 0; totalMatches > i; i++){ //algorithm to create the matches(team vs team). functioning/tested.
             matchList.get(i).setMatchNumber(i+1);
         }
-
     }
 
     public static void furtherMatchCreation(){
         matchList.clear();
         randomTeamList.clear();
         int newTotalTeams = winningTeams.size();
+        System.out.println("newTotalTeams size: "+newTotalTeams);
 
         if(newTotalTeams!=1){
             totalMatches = newTotalTeams/2;
@@ -83,14 +83,13 @@ public class Referee {
         winningTeams.clear(); //clears out everything in the winning teams array to be used with the next winners
     }
 
-    public static void displayCurrentMatches(){ //algorithm to print off team matches. functioning/tested.
-        if((matchList.size()==1)&&teamSittingOutCheck==0){
-                System.out.println("__________FINAL Round:__________");
-            }
-            else {
+    public static void displayCurrentMatches() { //algorithm to print off team matches. functioning/tested.
+        if ((matchList.size() == 1) && teamSittingOutCheck == 0) {
+            System.out.println("__________FINAL Round:__________");
+        } else {
             System.out.println("_______________________________________________________________________");
-                System.out.println("\n__________Round " + numberOfRounds + ":__________");
-            }
+            System.out.println("\n__________Round " + numberOfRounds + ":__________");
+        }
 
             for (int i = 0; totalMatches > i; i++) {
 
@@ -113,7 +112,7 @@ public class Referee {
         int scoreTeam2 = 0;
         int updateCounter = 0;
 
-        System.out.println("\nYou're about to assign team winners for each of the matches.");
+        System.out.println("\nYou're about to assign scores for each team, depending on each match.");
 
         while(updateCounter < totalMatches) {
             System.out.println("\nType out the match number for which teams to update: ");
@@ -146,17 +145,17 @@ public class Referee {
                 updateCounter++;
             }
         }
-        //System.out.println("winning teams size"+winningTeams.size());
         loopCounter++;
     }
 
     public static void displayTotalMatchInfo() {
+
         System.out.println("\n***Match Information with Team Winners***");
 
-        if((matchList.size()==1)&&teamSittingOutCheck==0){
-            System.out.println("TEAM "+matchList.get(0).getWinningTeam()+" is the WINNER of the Tennis Tournament!");
-        }
-        else {
+        if ((matchList.size() == 1) && teamSittingOutCheck == 0) {
+            System.out.println("TEAM " + matchList.get(0).getWinningTeam() + " is the WINNER of the Tennis Tournament!");
+            return;
+        } else {
             for (int i = 0; totalMatches > i; i++) {
                 System.out.println("Match " + matchList.get(i).getMatchNumber() + ": Team "
                         + matchList.get(i).getTeamOne().getTeamNumber() + " vs Team " + matchList.get(i).getTeamTwo().getTeamNumber() +

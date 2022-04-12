@@ -20,51 +20,49 @@ import java.util.Scanner;
 public class TournamentTesting{
 
     public static void main(String[] args) {
-        /*
-        int loopCounter = 0;
+        int keepPlayingCheck = 1;
+        Scanner userInput = new Scanner(System.in);
 
-        if((TournamentConfigs.getNumberOfTeams()%2)==1){
-            loopCounter = (TournamentConfigs.getNumberOfTeams()/2) + 1;
+        //initialize the game!
+        while(keepPlayingCheck==1) {
+            //initial team setup for tournament
+            TournamentConfigs.setNumberOfTeams();
+            TournamentConfigs.setNumberOfPlayersOnTeam();
+            //team list creation
+            TeamStoring.createTeamList();
+            //System.out.println("Manual team initialization or automatic?"); //go with automatic first
+            TeamStoring.teamAutoInitialization();
+            //System.out.println("Manual match creation or automatic?"); //go with automatic first
+            Referee.randomizeTeams();
+            Referee.createTeamMatches();
+
+            int totalTeams = TournamentConfigs.getNumberOfTeams(); //looper to count down match runs
+            System.out.println("round counter: "+totalTeams);
+
+            //code below are good for numbers 2 - 8, but not for 10 and above
+            if(totalTeams==2||totalTeams==4||totalTeams==6||totalTeams==8) {
+                while (totalTeams > 2) {
+                    Referee.displayCurrentMatches();
+                    Referee.updateMatchesWithWinners();
+                    Referee.displayTotalMatchInfo();
+                    Referee.furtherMatchCreation();
+                    totalTeams = totalTeams / 2;
+                }
+                Referee.displayCurrentMatches();
+                Referee.updateMatchesWithWinners();
+                Referee.displayTotalMatchInfo();
+            }
+
+
+            System.out.println("\nDo you want to play again? (1:yes,2:no)");
+            keepPlayingCheck = Integer.parseInt(userInput.nextLine());
+
+            if(keepPlayingCheck==1){
+                System.out.println("\nRestarting simulation...");
+                System.out.println("Previous game cleared!...\n");
+
+                TeamStoring.teamList.clear();
+            }
         }
-        else{
-            loopCounter = (TournamentConfigs.getNumberOfTeams()/2)
-        }
-        System.out.println("loopCounter test "+loopCounter);*/
-        //System.out.println("Welcome to the Tennis Tournament Simulator\n");
-
-        //initial tournament setup
-        TournamentConfigs.setNumberOfTeams();
-        TournamentConfigs.setNumberOfPlayersOnTeam();
-        TeamStoring.createTeamList();
-        //System.out.println("Manual team initialization or automatic?"); //go with automatic first
-        TeamStoring.teamAutoInitialization();
-        //System.out.println("Manual match creation or automatic?"); //go with automatic first
-        Referee.randomizeTeams();
-        Referee.createTeamMatches();
-
-
-
-        Referee.displayCurrentMatches();
-        Referee.updateMatchesWithWinners();
-        Referee.displayTotalMatchInfo();
-        Referee.furtherMatchCreation();
-
-        Referee.displayCurrentMatches();
-        Referee.updateMatchesWithWinners();
-        Referee.displayTotalMatchInfo(); //displays matches & winners of matches with scores
-        Referee.furtherMatchCreation(); //creates matches, prints nothing to screen
-        Referee.displayCurrentMatches(); //displays th current team match ups
-        Referee.updateMatchesWithWinners(); //error could be here
-        Referee.displayTotalMatchInfo();
-        Referee.furtherMatchCreation(); //creates matches, prints nothing to screen OR HERE
-        Referee.displayCurrentMatches();
-        Referee.updateMatchesWithWinners();
-        Referee.displayTotalMatchInfo();
-        //up to here, the user is able to update the scores of the second round of matches.
-        //these scores are displayed back to the user
-        //find a way to assign the winner
-        System.out.println("total loop counter: "+Referee.loopCounter);
-
-
     }
 }
