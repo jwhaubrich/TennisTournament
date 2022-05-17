@@ -1,3 +1,5 @@
+package tournament_objects;
+
 import lombok.Getter;
 import lombok.Setter;
 @Getter

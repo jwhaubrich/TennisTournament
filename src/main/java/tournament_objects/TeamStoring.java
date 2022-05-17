@@ -1,4 +1,6 @@
-import lombok.Getter;
+package tournament_objects;
+
+import tournament_configurations.TournamentConfigs;
 
 import java.util.ArrayList;
 

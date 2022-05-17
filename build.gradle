@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+version = '1.0.0'
+
+java{
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+jar{
+    archiveBaseName = 'TennisTournament'
+
+    /*
+    manifest {
+        attributes 'Main-Class': "JoeCo.ExecuteProgram.SimpleCalculator"
+    }*/
+
+}
+/*
+application{
+   mainClass = 'JoeCo.ExecuteProgram.SimpleCalculator'
+}*/
+
+repositories {
+   mavenCentral()
+}
+
+   test {
+       useJUnitPlatform()
+   }
+
+dependencies {
+   testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}

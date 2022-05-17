@@ -1,3 +1,10 @@
+package tournament_organizer;
+
+import tournament_configurations.TournamentConfigs;
+import tournament_objects.IndividualMatch;
+import tournament_objects.IndividualTeam;
+import tournament_objects.TeamStoring;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;

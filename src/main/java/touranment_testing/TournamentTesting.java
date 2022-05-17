@@ -1,4 +1,4 @@
-/*
+package touranment_testing;/*
 Tennis tournament (4 hours) Develop a simple implementation of a tennis tournament that admits
 different types of matches (between women, between men and mixed between 2 and 4 participants).
 The system should allow referees to create matches and enter scores for each matchup, and allow
@@ -6,10 +6,14 @@ fans to view the entered results.  The basic concepts seen will be evaluated, it
 to build databases or APIS or user interface (data entered by console is allowed).
 
 Work Log:
-1. Created classes for storing the individual teams (TeamStoring.java), individual team object (IndividualTeam.java),
-an object to store info obtained from user (TournamentConfigs.java)
+1. Created classes for storing the individual teams (tournament_objects.TeamStoring.java), individual team object (IndividualTeam.java),
+an object to store info obtained from user (tournamentconfigurations.TournamentConfigs.java)
 
  */
+
+import tournament_configurations.TournamentConfigs;
+import tournament_objects.TeamStoring;
+import tournament_organizer.Referee;
 
 import java.util.Scanner;
 //make it so the team that's sitting out HAS to play the next round
@@ -24,7 +28,7 @@ public class TournamentTesting{
         Scanner userInput = new Scanner(System.in);
 
         //initialize the game!
-        while(keepPlayingCheck==1) {
+        while(keepPlayingCheck==1)
             //initial team setup for tournament
             TournamentConfigs.setNumberOfTeams();
             TournamentConfigs.setNumberOfPlayersOnTeam();

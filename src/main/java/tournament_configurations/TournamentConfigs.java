@@ -1,3 +1,5 @@
+package tournament_configurations;
+
 import java.util.Scanner;
 
 public class TournamentConfigs {
