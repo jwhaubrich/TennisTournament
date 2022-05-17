@@ -5,22 +5,22 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/jwhaubrich/Simple-Calculator">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Casio_calculator_JS-20WK_in_201901_002.jpg/340px-Casio_calculator_JS-20WK_in_201901_002.jpg" alt="Logo" width="80" height="80">
+  <a href="https://github.com/jwhaubrich/TennisTournament">
+    <img src="https://www.topendsports.com/sport/tennis/images/tennis-tournament-pixabay.jpg" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Simple Calculator</h3>
+<h3 align="center">Tennis Tournament Simulator</h3>
 
   <p align="center">
-    A simple calculator that performs basic mathematical functions: addition, subtraction, multiply, and divide.
+    A basic application that simulates a tennis tournament.
     <br />
-    <a href="https://github.com/jwhaubrich/Simple-Calculator"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/jwhaubrich/TennisTournament"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     ·
-    <a href="https://github.com/jwhaubrich/Simple-Calculator/issues">Report Bug</a>
+    <a href="https://github.com/jwhaubrich/TennisTournament/issues">Report Bug</a>
     ·
-    <a href="https://github.com/jwhaubrich/Simple-Calculator/issues">Request Feature</a>
+    <a href="https://github.com/jwhaubrich/TennisTournament/issues">Request Feature</a>
   </p>
 </div>
 
