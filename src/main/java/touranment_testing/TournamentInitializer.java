@@ -1,6 +1,6 @@
 /*
 create methods to restart the program and close the program - DONE
-do while loop inside of the initializeTennisTournament
+do while loop inside of the initializeTennisTournament - DONE
 don't have the reinitalizeTournamentCheck equal to anything at the top
  */
 
@@ -13,7 +13,7 @@ import tournament_organizer.Referee;
 import java.util.Scanner;
 
 public class TournamentInitializer {
-    private static int reinitializeTournamentCheck = 1; //if this isn't set to anything, could have a do while in initalize tennistournament
+    private static int reinitializeTournamentCheck;
     private static final Scanner userInput = new Scanner(System.in);
     
     public static void main(String[] args) {
@@ -22,8 +22,8 @@ public class TournamentInitializer {
     
     private static void initializeTennisTournament(){
 
-        //initialize the game!
-        while(reinitializeTournamentCheck==1){
+        do{
+            //initialize the game!
             //initial team setup for tournament
             TournamentBuilder.setNumberOfTeams();
             TournamentBuilder.setNumberOfPlayersOnTeam();
@@ -51,10 +51,8 @@ public class TournamentInitializer {
                 Referee.updateMatchesWithWinners();
                 Referee.displayTotalMatchInfo();
             }
-
             reinitializeTournamentCheck = restartTournamentCheck();
-
-        }
+        } while(reinitializeTournamentCheck==1);
     }
     
     private static int restartTournamentCheck(){
