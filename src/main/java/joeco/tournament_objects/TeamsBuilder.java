@@ -1,6 +1,6 @@
-package tournament_objects;
+package joeco.tournament_objects;
 
-import tournament_configurations.TournamentBuilder;
+import joeco.tournament_configurations.TournamentBuilder;
 
 import java.util.ArrayList;
 

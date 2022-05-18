@@ -1,18 +1,20 @@
-package tournament_organizer;
+package joeco.tournament_organizer;
 
-import tournament_configurations.TournamentBuilder;
-import tournament_objects.SingleMatch;
-import tournament_objects.SingleTeam;
-import tournament_objects.TeamsBuilder;
+import joeco.tournament_configurations.TournamentBuilder;
+import joeco.tournament_objects.SingleMatch;
+import joeco.tournament_objects.SingleTeam;
+import joeco.tournament_objects.TeamsBuilder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Referee {
+    public static ArrayList<SingleTeam> randomTeamList = new ArrayList<>();
     public static ArrayList<SingleMatch> matchList = new ArrayList<>();
     public static ArrayList<SingleTeam> winningTeams = new ArrayList<>();
-    public static ArrayList<SingleTeam> randomTeamList = new ArrayList<>();
     public static SingleTeam sittingOutTeam;
     public static int teamSittingOutCheck = 0;
     public static int numberOfRounds = 1;
@@ -21,7 +23,7 @@ public class Referee {
     public static int loopCounter;
 
 
-    public static void randomizeTeams(){
+    public static void randomizeTeamsList(){ //function checked and verified 5/18
         Random randomNumberCreator = new Random();
         ArrayList <Integer> randomNumberList = new ArrayList<>();
         int randomTeamNumber;
@@ -38,13 +40,13 @@ public class Referee {
         randomNumberList.clear();
     }
 
-    public static void createTeamMatches(){ //creates the initial matches between teams
+    public static void createInitialMatches(){ //function checked and verified 5/18
 
-        for(int i = 0; totalTeams > i; i = i + 2){ //algorithm to create the matches(team vs team). functioning/tested.
+        for(int i = 0; totalTeams > i; i = i + 2){
             matchList.add(new SingleMatch(randomTeamList.get(i), randomTeamList.get(i+1)));
         }
 
-        for(int i = 0; totalMatches > i; i++){ //algorithm to create the matches(team vs team). functioning/tested.
+        for(int i = 0; totalMatches > i; i++){
             matchList.get(i).setMatchNumber(i+1);
         }
     }
@@ -53,7 +55,6 @@ public class Referee {
         matchList.clear();
         randomTeamList.clear();
         int newTotalTeams = winningTeams.size();
-        System.out.println("newTotalTeams size: "+newTotalTeams);
 
         if(newTotalTeams!=1){
             totalMatches = newTotalTeams/2;
@@ -89,26 +90,6 @@ public class Referee {
         winningTeams.clear(); //clears out everything in the winning teams array to be used with the next winners
     }
 
-    public static void displayCurrentMatches() { //algorithm to print off team matches. functioning/tested.
-        if ((matchList.size() == 1) && teamSittingOutCheck == 0) {
-            System.out.println("__________FINAL Round:__________");
-        } else {
-            System.out.println("_______________________________________________________________________");
-            System.out.println("\n__________Round " + numberOfRounds + ":__________");
-        }
-
-            for (int i = 0; totalMatches > i; i++) {
-
-                System.out.println("Match " + (i + 1) + ": Team " + matchList.get(i).getTeamOne().getTeamNumber() + " vs Team "
-                        + matchList.get(i).getTeamTwo().getTeamNumber());
-            }
-
-            if(teamSittingOutCheck==1){
-                System.out.println("\n***Team "+sittingOutTeam.getTeamNumber()+" is sitting out this round***");
-            }
-            numberOfRounds++;
-
-    }
 
     public static void updateMatchesWithWinners(){
         //how can I make it so the user is only able to select the number of matches that are available?
@@ -154,24 +135,5 @@ public class Referee {
         loopCounter++;
     }
 
-    public static void displayTotalMatchInfo() {
-
-        System.out.println("\n***Match Information with Team Winners***");
-
-        if ((matchList.size() == 1) && teamSittingOutCheck == 0) {
-            System.out.println("TEAM " + matchList.get(0).getWinningTeam() + " is the WINNER of the Tennis Tournament!");
-            return;
-        } else {
-            for (int i = 0; totalMatches > i; i++) {
-                System.out.println("Match " + matchList.get(i).getMatchNumber() + ": Team "
-                        + matchList.get(i).getTeamOne().getTeamNumber() + " vs Team " + matchList.get(i).getTeamTwo().getTeamNumber() +
-                        ".\n\t Winner is Team " + matchList.get(i).getWinningTeam() + ", with a score of: " + matchList.get(i).getWinningScore() + "\n");
-            }
-
-            if (teamSittingOutCheck == 1) {
-                System.out.println("The team that sat out this round was: Team " + sittingOutTeam.getTeamNumber() + "\n");
-            }
-        }
-    }
 
 }

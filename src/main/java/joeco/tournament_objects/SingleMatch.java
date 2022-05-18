@@ -1,4 +1,4 @@
-package tournament_objects;
+package joeco.tournament_objects;
 
 public class SingleMatch {
     private SingleTeam teamOne;

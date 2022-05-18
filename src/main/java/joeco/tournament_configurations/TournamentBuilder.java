@@ -1,12 +1,11 @@
-package tournament_configurations;
-
-import tournament_objects.TeamsBuilder;
+package joeco.tournament_configurations;
 
 import java.util.Scanner;
 
 public class TournamentBuilder {
     private static int totalNumberOfTeams;
     private static int totalPlayersOnTeam;
+    private static int totalNumberOfRounds;
     private static final Scanner input = new Scanner(System.in);
     
     public static void setNumberOfTeams(){
