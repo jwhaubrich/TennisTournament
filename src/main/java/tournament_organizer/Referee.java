@@ -24,20 +24,16 @@ public class Referee {
     public static void randomizeTeams(){
         Random randomNumberCreator = new Random();
         ArrayList <Integer> randomNumberList = new ArrayList<>();
-        int randomTeam;
-        int numberOfTeamsAvailable = totalTeams;
+        int randomTeamNumber;
 
         for(int i = 0; totalTeams > i; i++) {
-            randomTeam = randomNumberCreator.nextInt(numberOfTeamsAvailable);
+            randomTeamNumber = randomNumberCreator.nextInt(totalTeams);
 
-            while (randomNumberList.contains(randomTeam)) { //find a new random team to put into the list
-                randomTeam = randomNumberCreator.nextInt(numberOfTeamsAvailable);
+            while (randomNumberList.contains(randomTeamNumber)) { //find a new random team to put into the list
+                randomTeamNumber = randomNumberCreator.nextInt(totalTeams);
             }
-
-            randomTeamList.add(TeamsBuilder.teamList.get(randomTeam));
-            randomNumberList.add(randomTeam);
-
-            numberOfTeamsAvailable--;
+            randomTeamList.add(TeamsBuilder.teamList.get(randomTeamNumber));
+            randomNumberList.add(randomTeamNumber);
         }
         randomNumberList.clear();
     }
