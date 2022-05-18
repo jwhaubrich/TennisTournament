@@ -26,7 +26,7 @@ public class TournamentInitializer {
             //initialize the game!
             //initial team setup for tournament
             TournamentBuilder.setNumberOfTeams();
-            TournamentBuilder.setNumberOfPlayersOnTeam();
+            TournamentBuilder.setTotalPlayersOnTeam();
             //team list creation
             TeamsBuilder.createTeamList();
             //System.out.println("Manual team initialization or automatic?"); //go with automatic first

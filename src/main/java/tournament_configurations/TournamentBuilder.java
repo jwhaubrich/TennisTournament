@@ -16,6 +16,7 @@ public class TournamentBuilder {
             try {
                 totalNumberOfTeams = Integer.parseInt((input.nextLine()));
             } catch (NumberFormatException e) {
+                System.out.println("***Warning***: Not a number.\n");
                 totalNumberOfTeams = 1;
             }
 
@@ -28,23 +29,26 @@ public class TournamentBuilder {
         }
     }
 
-    public static void setNumberOfPlayersOnTeam(){
-        int playersPerTeamCheck = 0;
+    public static void setTotalPlayersOnTeam(){
+        boolean playersPerTeamCheck = false;
 
-        while(playersPerTeamCheck != 1 || totalNumberOfTeams==0) {
+        while(!playersPerTeamCheck) {
             System.out.println("Will this tournament be for 2 or 4 player teams?: ");
 
             try {
                 totalPlayersOnTeam = Integer.parseInt((input.nextLine()));
             } catch (NumberFormatException e) {
-                System.out.println("Not a number!\n");
+                System.out.println("***WARNING***: Not a number.");
+                totalPlayersOnTeam = 1;
             }
 
-            if (totalPlayersOnTeam % 2 == 0) {
-                playersPerTeamCheck = 1;
-            } else {
-                System.out.println("***Warning***: Please enter an even number.\n");
-                playersPerTeamCheck = 0;
+            if(totalPlayersOnTeam == 2 || totalPlayersOnTeam == 4){
+                if (totalPlayersOnTeam % 2 == 0) {
+                    playersPerTeamCheck = true;
+                }
+            }
+             else {
+                System.out.println("***Warning***: Please select 2 or 4.\n");
             }
         }
     }
