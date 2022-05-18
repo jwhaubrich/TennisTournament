@@ -1,5 +1,7 @@
 package tournament_configurations;
 
+import tournament_objects.TeamsBuilder;
+
 import java.util.Scanner;
 
 public class TournamentBuilder {

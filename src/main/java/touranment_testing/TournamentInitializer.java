@@ -28,9 +28,9 @@ public class TournamentInitializer {
             TournamentBuilder.setNumberOfTeams();
             TournamentBuilder.setTotalPlayersOnTeam();
             //team list creation
-            TeamsBuilder.createTeamList();
+            TeamsBuilder.createInitialTeamList();
             //System.out.println("Manual team initialization or automatic?"); //go with automatic first
-            TeamsBuilder.teamAutoInitialization();
+            TeamsBuilder.initializationOfSingleTeams();
             //System.out.println("Manual match creation or automatic?"); //go with automatic first
             Referee.randomizeTeams();
             Referee.createTeamMatches();
