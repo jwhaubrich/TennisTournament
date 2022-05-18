@@ -5,10 +5,11 @@ import java.util.Scanner;
 public class TournamentBuilder {
     private static int totalNumberOfTeams;
     private static int totalPlayersOnTeam;
-    private static boolean numberOfTeamsSetCheck = false;
+
     static Scanner input = new Scanner(System.in);
     
     public static void setNumberOfTeams(){
+        boolean numberOfTeamsSetCheck = false;
 
         while(!numberOfTeamsSetCheck){
             System.out.println("How many teams are playing? (Enter even number): ");

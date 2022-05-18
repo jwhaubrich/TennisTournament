@@ -4,8 +4,8 @@ import tournament_configurations.TournamentBuilder;
 
 import java.util.ArrayList;
 
-public class TeamStoring {
-    public static ArrayList<IndividualTeam> teamList = new ArrayList<>();
+public class TeamsBuilder {
+    public static ArrayList<SingleTeam> teamList = new ArrayList<>();
 
     public static void createTeamList(){
         int numberOfTeams = TournamentBuilder.getNumberOfTeams(); //actual code for user interaction
@@ -13,7 +13,7 @@ public class TeamStoring {
         //int numberOfTeams = 10; //code for testing the input of the number of teams
 
         for(int i = 1; numberOfTeams >= i; i++){ //puts the teams into the teamlist in order
-            teamList.add(new IndividualTeam(i));
+            teamList.add(new SingleTeam(i));
         }
     }
 

@@ -1,13 +1,13 @@
 package tournament_objects;
 
-public class IndividualTeam {
+public class SingleTeam {
     private int teamNumber;
     private int numberOfIndividuals;
     private int numberOfMales;
     private int numberOfFemales;
     private int finalScore;
 
-    public IndividualTeam(int newTeamNumber){
+    public SingleTeam(int newTeamNumber){
         this.teamNumber = newTeamNumber;
     }
 
@@ -42,6 +42,7 @@ public class IndividualTeam {
     public void setNumberOfMales(int numberOfMales) {
         this.numberOfMales = numberOfMales;
     }
+
 
     public void setNumberOfFemales(int numberOfFemales) {
         this.numberOfFemales = numberOfFemales;

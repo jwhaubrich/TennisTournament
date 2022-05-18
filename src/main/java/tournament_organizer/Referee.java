@@ -1,19 +1,19 @@
 package tournament_organizer;
 
 import tournament_configurations.TournamentBuilder;
-import tournament_objects.IndividualMatch;
-import tournament_objects.IndividualTeam;
-import tournament_objects.TeamStoring;
+import tournament_objects.SingleMatch;
+import tournament_objects.SingleTeam;
+import tournament_objects.TeamsBuilder;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Referee {
-    public static ArrayList<IndividualMatch> matchList = new ArrayList<>();
-    public static ArrayList<IndividualTeam> winningTeams = new ArrayList<>();
-    public static ArrayList<IndividualTeam> randomTeamList = new ArrayList<>();
-    public static IndividualTeam sittingOutTeam;
+    public static ArrayList<SingleMatch> matchList = new ArrayList<>();
+    public static ArrayList<SingleTeam> winningTeams = new ArrayList<>();
+    public static ArrayList<SingleTeam> randomTeamList = new ArrayList<>();
+    public static SingleTeam sittingOutTeam;
     public static int teamSittingOutCheck = 0;
     public static int numberOfRounds = 1;
     public static int totalTeams = TournamentBuilder.getNumberOfTeams();
@@ -33,7 +33,7 @@ public class Referee {
                 randomNumber = randomNumberCreator.nextInt(totalTeams);
             }
 
-            randomTeamList.add(TeamStoring.teamList.get(randomNumber));
+            randomTeamList.add(TeamsBuilder.teamList.get(randomNumber));
             randomNumberList.add(randomNumber);
         }
 
@@ -42,7 +42,7 @@ public class Referee {
     public static void createTeamMatches(){ //creates the initial matches between teams
 
         for(int i = 0; totalTeams > i; i = i + 2){ //algorithm to create the matches(team vs team). functioning/tested.
-            matchList.add(new IndividualMatch(randomTeamList.get(i), randomTeamList.get(i+1)));
+            matchList.add(new SingleMatch(randomTeamList.get(i), randomTeamList.get(i+1)));
         }
 
         for(int i = 0; totalMatches > i; i++){ //algorithm to create the matches(team vs team). functioning/tested.
@@ -80,7 +80,7 @@ public class Referee {
         }
 
         for(int i = 0; newTotalTeams  > i; i = i + 2){ //algorithm to create the matches(team vs team). functioning/tested.
-            matchList.add(new IndividualMatch(randomTeamList.get(i), randomTeamList.get(i+1)));
+            matchList.add(new SingleMatch(randomTeamList.get(i), randomTeamList.get(i+1)));
         }
 
         for(int i = 0; totalMatches  > i; i++){ //algorithm that sets match numbers to each match.

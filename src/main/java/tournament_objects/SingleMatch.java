@@ -1,22 +1,22 @@
 package tournament_objects;
 
-public class IndividualMatch {
-    private IndividualTeam teamOne; //should these be private?
-    private IndividualTeam teamTwo;
+public class SingleMatch {
+    private SingleTeam teamOne;
+    private SingleTeam teamTwo;
     private int winningTeam;
     private int winningScore;
     private int matchNumber;
 
-    public IndividualMatch(IndividualTeam newTeamOne, IndividualTeam newTeamTwo){
+    public SingleMatch(SingleTeam newTeamOne, SingleTeam newTeamTwo){
         this.teamOne = newTeamOne;
         this.teamTwo = newTeamTwo;
     }
 
-    public IndividualTeam getTeamOne() {
+    public SingleTeam getTeamOne() {
         return this.teamOne;
     }
 
-    public IndividualTeam getTeamTwo() {
+    public SingleTeam getTeamTwo() {
         return this.teamTwo;
     }
 
@@ -32,11 +32,11 @@ public class IndividualMatch {
         return this.matchNumber;
     }
 
-    public void setTeamOne(IndividualTeam teamOne) {
+    public void setTeamOne(SingleTeam teamOne) {
         this.teamOne = teamOne;
     }
 
-    public void setTeamTwo(IndividualTeam teamTwo) {
+    public void setTeamTwo(SingleTeam teamTwo) {
         this.teamTwo = teamTwo;
     }
 

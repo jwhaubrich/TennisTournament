@@ -1,7 +1,7 @@
 package touranment_testing;
 
 import tournament_configurations.TournamentBuilder;
-import tournament_objects.TeamStoring;
+import tournament_objects.TeamsBuilder;
 import tournament_organizer.Referee;
 
 import java.util.Scanner;
@@ -10,21 +10,25 @@ import java.util.Scanner;
 //when entering which teams to enter scores for, implement some kind of error check
 //when entering scores for each team, show which teams played in the match
 
-public class TournamentTesting{
-
+public class TournamentInitializer {
+    private static int reinitializeTournamentCheck = 1;
+    private static final Scanner userInput = new Scanner(System.in);
+    
     public static void main(String[] args) {
-        int keepPlayingCheck = 1;
-        Scanner userInput = new Scanner(System.in);
+        initializeTennisTournament();
+    }
+    
+    public static void initializeTennisTournament(){
 
         //initialize the game!
-        while(keepPlayingCheck==1){
+        while(reinitializeTournamentCheck==1){
             //initial team setup for tournament
             TournamentBuilder.setNumberOfTeams();
             TournamentBuilder.setNumberOfPlayersOnTeam();
             //team list creation
-            TeamStoring.createTeamList();
+            TeamsBuilder.createTeamList();
             //System.out.println("Manual team initialization or automatic?"); //go with automatic first
-            TeamStoring.teamAutoInitialization();
+            TeamsBuilder.teamAutoInitialization();
             //System.out.println("Manual match creation or automatic?"); //go with automatic first
             Referee.randomizeTeams();
             Referee.createTeamMatches();
@@ -46,16 +50,38 @@ public class TournamentTesting{
                 Referee.displayTotalMatchInfo();
             }
 
-
-            System.out.println("\nDo you want to play again? (1:yes,2:no)");
-            keepPlayingCheck = Integer.parseInt(userInput.nextLine());
-
-            if(keepPlayingCheck==1){
-                System.out.println("\nRestarting simulation...");
-                System.out.println("Previous game cleared!...\n");
-
-                TeamStoring.teamList.clear();
-            }
+            reinitializeTournamentCheck = restartTournamentCheck();
         }
     }
+    
+    public static int restartTournamentCheck(){
+        int restartTournamentCheckLooper = 0;
+
+        while(restartTournamentCheckLooper!=1) {
+            System.out.println("\nDo you want to play again? [1:yes,2:no]");
+
+            try {
+                reinitializeTournamentCheck = Integer.parseInt(userInput.nextLine());
+            } catch (Exception e) {
+                System.out.println("Not a valid selection.");
+            }
+
+            if (reinitializeTournamentCheck == 1) {
+                System.out.println("\nRestarting simulation...");
+                System.out.println("Previous game cleared!...\n");
+                TeamsBuilder.teamList.clear();
+                restartTournamentCheckLooper = 1;
+            }
+            else if(reinitializeTournamentCheck == 2){
+                System.out.println("You have exited the program.");
+                restartTournamentCheckLooper = 1;
+            }
+            else{
+                System.out.println("***WARNING***: Please enter [1:yes, 2:no]");
+            }
+        }
+
+        return reinitializeTournamentCheck;
+    }
+    
 }
