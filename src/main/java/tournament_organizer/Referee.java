@@ -24,19 +24,22 @@ public class Referee {
     public static void randomizeTeams(){
         Random randomNumberCreator = new Random();
         ArrayList <Integer> randomNumberList = new ArrayList<>();
-        int randomNumber = 0;
+        int randomTeam;
+        int numberOfTeamsAvailable = totalTeams;
 
         for(int i = 0; totalTeams > i; i++) {
-            randomNumber = randomNumberCreator.nextInt(totalTeams);
+            randomTeam = randomNumberCreator.nextInt(numberOfTeamsAvailable);
 
-            while (randomNumberList.contains(randomNumber)) { //find a random team to put into the list
-                randomNumber = randomNumberCreator.nextInt(totalTeams);
+            while (randomNumberList.contains(randomTeam)) { //find a new random team to put into the list
+                randomTeam = randomNumberCreator.nextInt(numberOfTeamsAvailable);
             }
 
-            randomTeamList.add(TeamsBuilder.teamList.get(randomNumber));
-            randomNumberList.add(randomNumber);
-        }
+            randomTeamList.add(TeamsBuilder.teamList.get(randomTeam));
+            randomNumberList.add(randomTeam);
 
+            numberOfTeamsAvailable--;
+        }
+        randomNumberList.clear();
     }
 
     public static void createTeamMatches(){ //creates the initial matches between teams

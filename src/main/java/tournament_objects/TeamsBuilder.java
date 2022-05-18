@@ -17,9 +17,12 @@ public class TeamsBuilder {
 
     public static void initializationOfSingleTeams(){
         int numberOfTeamPlayers = TournamentBuilder.getTotalPlayersOnTeam();
+        int teamNumber = 1;
 
         for(int i = 0; totalNumberOfTeams > i; i++){
             teamList.get(i).setNumberOfIndividuals(numberOfTeamPlayers);
+            teamList.get(i).setTeamNumber(teamNumber);
+            teamNumber++;
         }
     }
 }
