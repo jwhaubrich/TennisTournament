@@ -5,19 +5,18 @@ import java.util.Scanner;
 public class TournamentBuilder {
     private static int totalNumberOfTeams;
     private static int totalPlayersOnTeam;
-
-    static Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
     
     public static void setNumberOfTeams(){
         boolean numberOfTeamsSetCheck = false;
 
         while(!numberOfTeamsSetCheck){
-            System.out.println("How many teams are playing? (Enter even number): ");
+            System.out.println("How many teams are playing? (Enter an even number): ");
 
             try {
                 totalNumberOfTeams = Integer.parseInt((input.nextLine()));
             } catch (NumberFormatException e) {
-                System.out.println("Not a number!\n");
+                totalNumberOfTeams = 1;
             }
 
             if (totalNumberOfTeams % 2 == 0) {

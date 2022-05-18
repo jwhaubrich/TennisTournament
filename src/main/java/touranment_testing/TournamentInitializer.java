@@ -72,7 +72,7 @@ public class TournamentInitializer {
                 userPlayAgainLooper = 1;
                 resetProgram();
             }
-            else if(reinitializeTournamentCheck == 2){
+            if(reinitializeTournamentCheck == 2){
                 userPlayAgainLooper = 1;
                 closeProgram();
             }
