@@ -1,17 +1,6 @@
-package touranment_testing;/*
-Tennis tournament (4 hours) Develop a simple implementation of a tennis tournament that admits
-different types of matches (between women, between men and mixed between 2 and 4 participants).
-The system should allow referees to create matches and enter scores for each matchup, and allow
-fans to view the entered results.  The basic concepts seen will be evaluated, it is not necessary
-to build databases or APIS or user interface (data entered by console is allowed).
+package touranment_testing;
 
-Work Log:
-1. Created classes for storing the individual teams (tournament_objects.TeamStoring.java), individual team object (IndividualTeam.java),
-an object to store info obtained from user (tournamentconfigurations.TournamentConfigs.java)
-
- */
-
-import tournament_configurations.TournamentConfigs;
+import tournament_configurations.TournamentBuilder;
 import tournament_objects.TeamStoring;
 import tournament_organizer.Referee;
 
@@ -28,10 +17,10 @@ public class TournamentTesting{
         Scanner userInput = new Scanner(System.in);
 
         //initialize the game!
-        while(keepPlayingCheck==1)
+        while(keepPlayingCheck==1){
             //initial team setup for tournament
-            TournamentConfigs.setNumberOfTeams();
-            TournamentConfigs.setNumberOfPlayersOnTeam();
+            TournamentBuilder.setNumberOfTeams();
+            TournamentBuilder.setNumberOfPlayersOnTeam();
             //team list creation
             TeamStoring.createTeamList();
             //System.out.println("Manual team initialization or automatic?"); //go with automatic first
@@ -40,7 +29,7 @@ public class TournamentTesting{
             Referee.randomizeTeams();
             Referee.createTeamMatches();
 
-            int totalTeams = TournamentConfigs.getNumberOfTeams(); //looper to count down match runs
+            int totalTeams = TournamentBuilder.getNumberOfTeams(); //looper to count down match runs
             System.out.println("round counter: "+totalTeams);
 
             //code below are good for numbers 2 - 8, but not for 10 and above

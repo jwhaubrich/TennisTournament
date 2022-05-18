@@ -2,17 +2,15 @@ package tournament_configurations;
 
 import java.util.Scanner;
 
-public class TournamentConfigs {
+public class TournamentBuilder {
     private static int totalNumberOfTeams;
     private static int totalPlayersOnTeam;
+    private static boolean numberOfTeamsSetCheck = false;
     static Scanner input = new Scanner(System.in);
-
-
+    
     public static void setNumberOfTeams(){
 
-        int totalTeamCheck = 0;
-
-        while(totalTeamCheck != 1 || totalNumberOfTeams == 0) {
+        while(!numberOfTeamsSetCheck){
             System.out.println("How many teams are playing? (Enter even number): ");
 
             try {
@@ -22,13 +20,12 @@ public class TournamentConfigs {
             }
 
             if (totalNumberOfTeams % 2 == 0) {
-                totalTeamCheck = 1;
+                numberOfTeamsSetCheck = true;
             } else {
                 System.out.println("***Warning***: Please enter an even number.\n");
                 totalNumberOfTeams = 0;
             }
         }
-
     }
 
     public static void setNumberOfPlayersOnTeam(){

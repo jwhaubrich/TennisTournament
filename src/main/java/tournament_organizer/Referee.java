@@ -1,6 +1,6 @@
 package tournament_organizer;
 
-import tournament_configurations.TournamentConfigs;
+import tournament_configurations.TournamentBuilder;
 import tournament_objects.IndividualMatch;
 import tournament_objects.IndividualTeam;
 import tournament_objects.TeamStoring;
@@ -16,7 +16,7 @@ public class Referee {
     public static IndividualTeam sittingOutTeam;
     public static int teamSittingOutCheck = 0;
     public static int numberOfRounds = 1;
-    public static int totalTeams = TournamentConfigs.getNumberOfTeams();
+    public static int totalTeams = TournamentBuilder.getNumberOfTeams();
     public static int totalMatches = totalTeams/2;
     public static int loopCounter;
 
