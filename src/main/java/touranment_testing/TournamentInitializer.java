@@ -1,3 +1,9 @@
+/*
+create methods to restart the program and close the program - DONE
+do while loop inside of the initializeTennisTournament
+don't have the reinitalizeTournamentCheck equal to anything at the top
+ */
+
 package touranment_testing;
 
 import tournament_configurations.TournamentBuilder;
@@ -5,20 +11,16 @@ import tournament_objects.TeamsBuilder;
 import tournament_organizer.Referee;
 
 import java.util.Scanner;
-//make it so the team that's sitting out HAS to play the next round
-//print to the user which team is sitting out when the matches and rounds are listed so they're not confused
-//when entering which teams to enter scores for, implement some kind of error check
-//when entering scores for each team, show which teams played in the match
 
 public class TournamentInitializer {
-    private static int reinitializeTournamentCheck = 1;
+    private static int reinitializeTournamentCheck = 1; //if this isn't set to anything, could have a do while in initalize tennistournament
     private static final Scanner userInput = new Scanner(System.in);
     
     public static void main(String[] args) {
         initializeTennisTournament();
     }
     
-    public static void initializeTennisTournament(){
+    private static void initializeTennisTournament(){
 
         //initialize the game!
         while(reinitializeTournamentCheck==1){
@@ -51,37 +53,42 @@ public class TournamentInitializer {
             }
 
             reinitializeTournamentCheck = restartTournamentCheck();
+
         }
     }
     
-    public static int restartTournamentCheck(){
-        int restartTournamentCheckLooper = 0;
-
-        while(restartTournamentCheckLooper!=1) {
+    private static int restartTournamentCheck(){
+        int userPlayAgainLooper = 0;
+        reinitializeTournamentCheck = 0;
+        
+        while(userPlayAgainLooper!=1) {
             System.out.println("\nDo you want to play again? [1:yes,2:no]");
 
             try {
                 reinitializeTournamentCheck = Integer.parseInt(userInput.nextLine());
             } catch (Exception e) {
-                System.out.println("Not a valid selection.");
+                System.out.println("***WARNING***: Please choose [1:yes,2:no].");
             }
 
             if (reinitializeTournamentCheck == 1) {
-                System.out.println("\nRestarting simulation...");
-                System.out.println("Previous game cleared!...\n");
-                TeamsBuilder.teamList.clear();
-                restartTournamentCheckLooper = 1;
+                userPlayAgainLooper = 1;
+                resetProgram();
             }
             else if(reinitializeTournamentCheck == 2){
-                System.out.println("You have exited the program.");
-                restartTournamentCheckLooper = 1;
-            }
-            else{
-                System.out.println("***WARNING***: Please enter [1:yes, 2:no]");
+                userPlayAgainLooper = 1;
+                closeProgram();
             }
         }
-
         return reinitializeTournamentCheck;
+    }
+
+    private static void closeProgram(){
+        System.out.println("You have exited the Tennis Tournament Simulation.");
+    }
+
+    private static void resetProgram(){
+        System.out.println("\nTennis Tournament Simulation has been restarted...\n");
+        TeamsBuilder.teamList.clear();
     }
     
 }
