@@ -49,9 +49,12 @@ public class Referee {
         for(int i = 0; totalMatches > i; i++){
             matchList.get(i).setMatchNumber(i+1);
         }
+
+        //maybe put here to clear out the randomTeamList?
     }
 
     public static void furtherMatchCreation(){
+        System.out.println("Inside Referee class");
         matchList.clear();
         randomTeamList.clear();
         int newTotalTeams = winningTeams.size();
@@ -92,6 +95,7 @@ public class Referee {
 
 
     public static void updateMatchesWithWinners(){
+        System.out.println("inside Referee class");
         //how can I make it so the user is only able to select the number of matches that are available?
         Scanner input = new Scanner(System.in);
         int matchToUpdate = 0;

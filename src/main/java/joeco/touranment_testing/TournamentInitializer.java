@@ -19,27 +19,26 @@ package joeco.touranment_testing;
 import joeco.tournament_configurations.TournamentBuilder;
 import joeco.tournament_objects.TeamsBuilder;
 import joeco.tournament_organizer.Referee;
-import joeco.user_interaction.UserDisplay;
+import joeco.context_displays.InfoContextDisplay;
 
 import java.util.Scanner;
 
 public class TournamentInitializer {
     private static int reinitializeTournamentCheck;
     private static final Scanner userInput = new Scanner(System.in);
-    private static int totalNumberOfTeams = TournamentBuilder.getNumberOfTeams();
+    private static int totalNumberOfTeams;
     
     public static void main(String[] args) {
         initializeTennisTournament();
     }
     
     private static void initializeTennisTournament(){
-        int numberOfMatchesCountdown;
 
-        do{
             //initialize the game!
             //initial team setup for tournament
             TournamentBuilder.setNumberOfTeams();
             TournamentBuilder.setTotalPlayersOnTeam();
+            totalNumberOfTeams = TournamentBuilder.getNumberOfTeams();
             //team list creation
             TeamsBuilder.createInitialTeamList();
             //System.out.println("Manual team initialization or automatic?"); //go with automatic first
@@ -47,37 +46,22 @@ public class TournamentInitializer {
             //System.out.println("Manual match creation or automatic?"); //go with automatic first
             Referee.randomizeTeamsList();
             Referee.createInitialMatches();
+            TournamentInitializer.playThroughTeamsLoop();
 
-            numberOfMatchesCountdown = TournamentBuilder.getNumberOfTeams(); //looper to count down match runs
+    }
 
-            //something has to go HERE to see if everything inside of the do loop is necessary
-            //maybe if the number of teams is two...
-            do {
-                UserDisplay.displayMatchInformation();
-                Referee.updateMatchesWithWinners();
-                UserDisplay.displayTotalMatchInfo();
-                Referee.furtherMatchCreation(); //stops here in the code
-                numberOfMatchesCountdown = numberOfMatchesCountdown / 2;
-            } while (numberOfMatchesCountdown > 2);
-                UserDisplay.displayMatchInformation();
-                Referee.updateMatchesWithWinners();
-                UserDisplay.displayTotalMatchInfo();
-
-            //code below are good for numbers 2 - 8, but not for 10 and above
-            /*if(totalNumberOfTeams==2||totalNumberOfTeams==4||totalNumberOfTeams==6||totalNumberOfTeams==8) {
-                while (numberOfMatchesCountdown > 2) {
-                    Referee.displayCurrentMatches();
-                    Referee.updateMatchesWithWinners();
-                    Referee.displayTotalMatchInfo();
-                    Referee.furtherMatchCreation();
-                    numberOfMatchesCountdown = numberOfMatchesCountdown / 2;
-                }
-                Referee.displayCurrentMatches();
-                Referee.updateMatchesWithWinners();
-                Referee.displayTotalMatchInfo();
-            }*/
-            reinitializeTournamentCheck = restartTournamentCheck();
-        } while(reinitializeTournamentCheck==1);
+    private static void playThroughTeamsLoop(){
+        InfoContextDisplay.displayPreMatchInformation();// 1 rounds
+        Referee.updateMatchesWithWinners();
+        InfoContextDisplay.displayTeamWinnerInformation();
+        Referee.furtherMatchCreation();
+        InfoContextDisplay.displayPreMatchInformation();// 2 rounds
+        Referee.updateMatchesWithWinners();
+        InfoContextDisplay.displayTeamWinnerInformation();
+        Referee.furtherMatchCreation();
+        InfoContextDisplay.displayPreMatchInformation();// final round, 6 teams playing
+        Referee.updateMatchesWithWinners();
+        InfoContextDisplay.displayTeamWinnerInformation();
     }
     
     private static int restartTournamentCheck(){
