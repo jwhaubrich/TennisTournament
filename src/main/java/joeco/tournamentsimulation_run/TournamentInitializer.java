@@ -18,6 +18,7 @@ package joeco.tournamentsimulation_run;
 
 import joeco.tournament_configurations.TournamentBuilder;
 import joeco.tournament_objects.TeamsBuilder;
+import joeco.tournament_organizer.MatchUpdater;
 import joeco.tournament_organizer.Referee;
 import joeco.context_displays.InfoContextDisplay;
 
@@ -52,15 +53,15 @@ public class TournamentInitializer {
 
     private static void playThroughTeamsLoop(){
         InfoContextDisplay.displayPreMatchInformation();// 1 rounds
-        Referee.updateMatchesWithWinners();
+        Referee.updateMatchWithTeamScores();
         InfoContextDisplay.displayTeamWinnerInformation();
-        Referee.furtherMatchCreation();
+        MatchUpdater.createNextTeamMatches();
         InfoContextDisplay.displayPreMatchInformation();// 2 rounds
-        Referee.updateMatchesWithWinners();
+        Referee.updateMatchWithTeamScores();
         InfoContextDisplay.displayTeamWinnerInformation();
-        Referee.furtherMatchCreation();
+        MatchUpdater.createNextTeamMatches();
         InfoContextDisplay.displayPreMatchInformation();// final round, 6 teams playing
-        Referee.updateMatchesWithWinners();
+        Referee.updateMatchWithTeamScores();
         InfoContextDisplay.displayTeamWinnerInformation();
     }
     
