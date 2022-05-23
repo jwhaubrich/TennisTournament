@@ -14,7 +14,7 @@ also creating new classes for user input and display
 need to put something above the do loop to ensure that the furthermatch creation section does not run
  */
 
-package joeco.touranment_testing;
+package joeco.tournamentsimulation_run;
 
 import joeco.tournament_configurations.TournamentBuilder;
 import joeco.tournament_objects.TeamsBuilder;
