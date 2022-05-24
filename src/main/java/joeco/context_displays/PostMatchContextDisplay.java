@@ -10,7 +10,6 @@ public class PostMatchContextDisplay {
 
         if ((Referee.matchList.size() == 1) && Referee.teamSittingOutCheck == 0) {
             System.out.println("TEAM " + Referee.matchList.get(0).getWinningTeam() + " is the WINNER of the Tennis Tournament!");
-            return;
         } else {
             for (int i = 0; Referee.totalMatches > i; i++) {
                 System.out.println("Match " + Referee.matchList.get(i).getMatchNumber() + ": Team "

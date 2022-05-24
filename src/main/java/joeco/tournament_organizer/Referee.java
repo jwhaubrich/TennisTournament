@@ -1,9 +1,10 @@
 package joeco.tournament_organizer;
 
 import joeco.tournament_configurations.TournamentBuilder;
+import joeco.tournament_configurations.MatchBuildUpdate;
 import joeco.tournament_objects.SingleMatch;
 import joeco.tournament_objects.SingleTeam;
-import joeco.tournament_objects.TeamsBuilder;
+import joeco.tournament_configurations.TeamsBuilder;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,7 +18,7 @@ public class Referee {
     public static int numberOfRounds = 1;
     public static int totalTeams = TournamentBuilder.getNumberOfTeams();
     public static int totalMatches = totalTeams/2;
-    public static int loopCounter;
+    public static int globalLoopCounter;
 
 
     public static void randomizeTeamsList(){ //function checked and verified 5/18
@@ -31,7 +32,7 @@ public class Referee {
             while (randomNumberList.contains(randomTeamNumber)) { //find a new random team to put into the list
                 randomTeamNumber = randomNumberCreator.nextInt(totalTeams);
             }
-            randomTeamList.add(TeamsBuilder.teamList.get(randomTeamNumber));
+            randomTeamList.add(TeamsBuilder.getTeamList().get(randomTeamNumber));
             randomNumberList.add(randomTeamNumber);
         }
         randomNumberList.clear();
@@ -51,7 +52,7 @@ public class Referee {
     }
 
     public static void updateMatchWithTeamScores(){
-        MatchUpdater.assignScoresToTeams();
+        MatchBuildUpdate.assignScoresToTeams();
     }
 
 }

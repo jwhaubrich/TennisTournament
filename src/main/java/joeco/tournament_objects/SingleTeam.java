@@ -1,5 +1,6 @@
 package joeco.tournament_objects;
 
+//this class has methods that aren't currently being used, but could be in the future
 public class SingleTeam {
     private int teamNumber;
     private int numberOfIndividuals;

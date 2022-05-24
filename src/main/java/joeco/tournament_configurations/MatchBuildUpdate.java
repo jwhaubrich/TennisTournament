@@ -1,12 +1,13 @@
-package joeco.tournament_organizer;
+package joeco.tournament_configurations;
 
 import joeco.tournament_objects.SingleMatch;
+import joeco.tournament_organizer.Referee;
 
 import java.util.Scanner;
 
 import static joeco.tournament_organizer.Referee.*;
 
-public class MatchUpdater {
+public class MatchBuildUpdate {
     public static int matchToUpdate;
     public static int scoreTeam1;
     public static int scoreTeam2;
@@ -25,46 +26,49 @@ public class MatchUpdater {
             //matchToUpdate = matchToUpdate - 1; replaced this with above statement
 
             if (0 <= matchToUpdate && matchToUpdate < Referee.totalMatches) {
-                System.out.println("What is the score for Team " + matchList.get(matchToUpdate).getTeamOne().getTeamNumber() + "?: ");
+                System.out.println("What is the score for Team " + Referee.matchList.get(matchToUpdate).getTeamOne().getTeamNumber() + "?: ");
                 scoreTeam1 = Integer.parseInt((input.nextLine()));
-                System.out.println("What is the score for Team " + matchList.get(matchToUpdate).getTeamTwo().getTeamNumber() + "?: ");
+                System.out.println("What is the score for Team " + Referee.matchList.get(matchToUpdate).getTeamTwo().getTeamNumber() + "?: ");
                 scoreTeam2 = Integer.parseInt((input.nextLine()));
                 System.out.println("Setting scores for teams...");
 
-                MatchUpdater.updateTeamScoresInMatch();
-                MatchUpdater.updateWinningTeamListWithTeamInfo();
+                MatchBuildUpdate.updateTeamScoresInMatch();
+                MatchBuildUpdate.updateWinningTeamListWithTeamInfo();
 
                 updateCounter++;
             }
         }
-        Referee.loopCounter++;
+        Referee.globalLoopCounter++;
     }
 
     public static void updateTeamScoresInMatch(){
-        matchList.get(matchToUpdate).getTeamOne().setFinalScore(scoreTeam1);
-        matchList.get(matchToUpdate).getTeamOne().setFinalScore(scoreTeam2);
+        Referee.matchList.get(matchToUpdate).getTeamOne().setFinalScore(scoreTeam1);
+        Referee.matchList.get(matchToUpdate).getTeamOne().setFinalScore(scoreTeam2);
     }
 
     public static void updateWinningTeamListWithTeamInfo(){
         if(scoreTeam1 > scoreTeam2){
-            matchList.get(matchToUpdate).setWinningTeam(matchList.get(matchToUpdate).getTeamOne().getTeamNumber());
-            matchList.get(matchToUpdate).setWinningScore(scoreTeam1);
-            Referee.winningTeams.add(matchList.get(matchToUpdate).getTeamOne());
+            Referee.matchList.get(matchToUpdate).setWinningTeam(Referee.matchList.get(matchToUpdate).getTeamOne().getTeamNumber());
+            Referee.matchList.get(matchToUpdate).setWinningScore(scoreTeam1);
+            Referee.winningTeams.add(Referee.matchList.get(matchToUpdate).getTeamOne());
         }
 
         if(scoreTeam2 > scoreTeam1){
-            matchList.get(matchToUpdate).setWinningTeam(matchList.get(matchToUpdate).getTeamTwo().getTeamNumber());
-            matchList.get(matchToUpdate).setWinningScore(scoreTeam2);
-            Referee.winningTeams.add(matchList.get(matchToUpdate).getTeamTwo());
+            Referee.matchList.get(matchToUpdate).setWinningTeam(Referee.matchList.get(matchToUpdate).getTeamTwo().getTeamNumber());
+            Referee.matchList.get(matchToUpdate).setWinningScore(scoreTeam2);
+            Referee.winningTeams.add(Referee.matchList.get(matchToUpdate).getTeamTwo());
         }
     }
 
+    //must go through and refactor this method
     public static void createNextTeamMatches(){
         System.out.println("Inside Referee class");
-        matchList.clear();
+        Referee.matchList.clear();
         Referee.randomTeamList.clear();
         int newTotalTeams = Referee.winningTeams.size();
 
+        //checks for when there is only one team left in the winningTeams list
+        //do I need this? why do I need it?
         if(newTotalTeams!=1){
             Referee.totalMatches = newTotalTeams/2;
         }
@@ -89,11 +93,11 @@ public class MatchUpdater {
         }
 
         for(int i = 0; newTotalTeams  > i; i = i + 2){ //algorithm to create the matches(team vs team). functioning/tested.
-            matchList.add(new SingleMatch(randomTeamList.get(i), randomTeamList.get(i+1)));
+            Referee.matchList.add(new SingleMatch(randomTeamList.get(i), randomTeamList.get(i+1)));
         }
 
         for(int i = 0; totalMatches  > i; i++){ //algorithm that sets match numbers to each match.
-            matchList.get(i).setMatchNumber(i+1);
+            Referee.matchList.get(i).setMatchNumber(i+1);
         }
 
         winningTeams.clear(); //clears out everything in the winning teams array to be used with the next winners
