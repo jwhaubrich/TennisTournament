@@ -1,13 +1,20 @@
 package joeco.tournament_configurations;
 
 import joeco.tournament_objects.SingleMatch;
+import joeco.tournament_objects.SingleTeam;
 import joeco.tournament_organizer.Referee;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import static joeco.tournament_configurations.TournamentBuilder.gTotalMatches;
 import static joeco.tournament_organizer.Referee.*;
+import static joeco.utils.SharedVariables.sittingOutTeam;
+import static joeco.utils.SharedVariables.teamSittingOutCheck;
+import static joeco.utils.SharedVariables.gListOfMatches;
 
 public class MatchBuildUpdate {
+    public static ArrayList<SingleTeam> gListWinningTeams = new ArrayList<>();
     public static int matchToUpdate;
     public static int scoreTeam1;
     public static int scoreTeam2;
@@ -20,17 +27,17 @@ public class MatchBuildUpdate {
 
         System.out.println("\nYou will now assign scores to each team, depending on each match.");
 
-        while(updateCounter < Referee.totalMatches) {
+        while(updateCounter < gTotalMatches) {
             System.out.println("\nType out the match number for which teams to update: ");
             matchToUpdate = Integer.parseInt(input.nextLine()) - 1;//indexed on 0
             //matchToUpdate = matchToUpdate - 1; replaced this with above statement
 
-            if (0 <= matchToUpdate && matchToUpdate < Referee.totalMatches) {
+            if (0 <= matchToUpdate && matchToUpdate < gTotalMatches) {
                 System.out.println("What is the score for Team "
-                        + Referee.matchList.get(matchToUpdate).getTeamOne().getTeamNumber() + "?: ");
+                        + gListOfMatches.get(matchToUpdate).getTeamOne().getTeamNumber() + "?: ");
                 scoreTeam1 = Integer.parseInt((input.nextLine()));
                 System.out.println("What is the score for Team "
-                        + Referee.matchList.get(matchToUpdate).getTeamTwo().getTeamNumber() + "?: ");
+                        +gListOfMatches.get(matchToUpdate).getTeamTwo().getTeamNumber() + "?: ");
                 scoreTeam2 = Integer.parseInt((input.nextLine()));
                 System.out.println("Setting scores for teams...");
 
@@ -40,70 +47,71 @@ public class MatchBuildUpdate {
                 updateCounter++;
             }
         }
-        Referee.globalLoopCounter++;
     }
 
     public static void updateTeamScoresInMatch(){
-        Referee.matchList.get(matchToUpdate).getTeamOne().setFinalScore(scoreTeam1);
-        Referee.matchList.get(matchToUpdate).getTeamOne().setFinalScore(scoreTeam2);
+        gListOfMatches.get(matchToUpdate).getTeamOne().setFinalScore(scoreTeam1);
+        gListOfMatches.get(matchToUpdate).getTeamOne().setFinalScore(scoreTeam2);
     }
 
     public static void updateWinningTeamListWithTeamInfo(){
         if(scoreTeam1 > scoreTeam2){
-            Referee.matchList.get(matchToUpdate).setWinningTeam(Referee.matchList.get
+            gListOfMatches.get(matchToUpdate).setWinningTeam(gListOfMatches.get
                     (matchToUpdate).getTeamOne().getTeamNumber());
-            Referee.matchList.get(matchToUpdate).setWinningScore(scoreTeam1);
-            Referee.winningTeams.add(Referee.matchList.get(matchToUpdate).getTeamOne());
+            gListOfMatches.get(matchToUpdate).setWinningScore(scoreTeam1);
+            MatchBuildUpdate.gListWinningTeams.add(gListOfMatches.get(matchToUpdate).getTeamOne());
         }
 
         if(scoreTeam2 > scoreTeam1){
-            Referee.matchList.get(matchToUpdate).setWinningTeam(Referee.matchList.get
+            gListOfMatches.get(matchToUpdate).setWinningTeam(gListOfMatches.get
                     (matchToUpdate).getTeamTwo().getTeamNumber());
-            Referee.matchList.get(matchToUpdate).setWinningScore(scoreTeam2);
-            Referee.winningTeams.add(Referee.matchList.get(matchToUpdate).getTeamTwo());
+            gListOfMatches.get(matchToUpdate).setWinningScore(scoreTeam2);
+            MatchBuildUpdate.gListWinningTeams.add(gListOfMatches.get(matchToUpdate).getTeamTwo());
         }
     }
 
     //must go through and refactor this method
+    //after I updated the totalMatches variable that was in Referee and I put it in TournamentBuilder
+    //I don't think this method will work anymore
     public static void createNextTeamMatches(){
         System.out.println("Inside Referee class");
-        Referee.matchList.clear();
-        Referee.randomTeamList.clear();
-        int newTotalTeams = Referee.winningTeams.size();
+        gListOfMatches.clear();
+        Referee.getRandomizedTeamList().clear();
+        int newTotalTeams = MatchBuildUpdate.gListWinningTeams.size();
 
-        //checks for when there is only one team left in the winningTeams list
+        //checks for when there is only one team left in the gListWinningTeams list
         //do I need this? why do I need it?
         if(newTotalTeams!=1){
-            Referee.totalMatches = newTotalTeams/2;
+            gTotalMatches = newTotalTeams/2;
         }
         else{
-            Referee.totalMatches = 1;
+            gTotalMatches = 1;
         }
 
         for(int i = 0; newTotalTeams > i; i++){
-            Referee.randomTeamList.add(Referee.winningTeams.get(i));
+            Referee.getRandomizedTeamList().add(MatchBuildUpdate.gListWinningTeams.get(i));
         }
 
-        if(teamSittingOutCheck==1){
-            Referee.randomTeamList.add(sittingOutTeam);
-            teamSittingOutCheck = 0;
+        if(teamSittingOutCheck==true){
+            Referee.getRandomizedTeamList().add(sittingOutTeam);
+            teamSittingOutCheck = false;
         }
 
-        if((randomTeamList.size()%2)==1){
-            sittingOutTeam = randomTeamList.get((randomTeamList.size()-1));
-            randomTeamList.remove((randomTeamList.size()-1));
+        if((getRandomizedTeamList().size()%2)==1){
+            sittingOutTeam = getRandomizedTeamList().get((getRandomizedTeamList().size()-1));
+            getRandomizedTeamList().remove((getRandomizedTeamList().size()-1));
             newTotalTeams = newTotalTeams - 1;
-            teamSittingOutCheck = 1;
+            teamSittingOutCheck = true;
         }
 
         for(int i = 0; newTotalTeams  > i; i = i + 2){ //algorithm to create the matches(team vs team). functioning/tested.
-            Referee.matchList.add(new SingleMatch(randomTeamList.get(i), randomTeamList.get(i+1)));
+            gListOfMatches.add(new SingleMatch(getRandomizedTeamList().get(i), getRandomizedTeamList().get(i+1)));
         }
 
-        for(int i = 0; totalMatches  > i; i++){ //algorithm that sets match numbers to each match.
-            Referee.matchList.get(i).setMatchNumber(i+1);
+        for(int i = 0; gTotalMatches  > i; i++){ //algorithm that sets match numbers to each match.
+            gListOfMatches.get(i).setMatchNumber(i+1);
         }
 
-        winningTeams.clear(); //clears out everything in the winning teams array to be used with the next winners
+        gListWinningTeams.clear(); //clears out everything in the winning teams array to be used with the next winners
     }
 }
