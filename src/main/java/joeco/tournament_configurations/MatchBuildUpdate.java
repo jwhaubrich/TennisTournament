@@ -12,7 +12,7 @@ public class MatchBuildUpdate {
     public static int scoreTeam1;
     public static int scoreTeam2;
 
-    public static void assignScoresToTeams(){
+    public static void assignWinOrLossToTeams(){
         System.out.println("inside MatchFunctionality class");
         //how can I make it so the user is only able to select the number of matches that are available?
         Scanner input = new Scanner(System.in);
@@ -26,9 +26,11 @@ public class MatchBuildUpdate {
             //matchToUpdate = matchToUpdate - 1; replaced this with above statement
 
             if (0 <= matchToUpdate && matchToUpdate < Referee.totalMatches) {
-                System.out.println("What is the score for Team " + Referee.matchList.get(matchToUpdate).getTeamOne().getTeamNumber() + "?: ");
+                System.out.println("What is the score for Team "
+                        + Referee.matchList.get(matchToUpdate).getTeamOne().getTeamNumber() + "?: ");
                 scoreTeam1 = Integer.parseInt((input.nextLine()));
-                System.out.println("What is the score for Team " + Referee.matchList.get(matchToUpdate).getTeamTwo().getTeamNumber() + "?: ");
+                System.out.println("What is the score for Team "
+                        + Referee.matchList.get(matchToUpdate).getTeamTwo().getTeamNumber() + "?: ");
                 scoreTeam2 = Integer.parseInt((input.nextLine()));
                 System.out.println("Setting scores for teams...");
 
@@ -48,13 +50,15 @@ public class MatchBuildUpdate {
 
     public static void updateWinningTeamListWithTeamInfo(){
         if(scoreTeam1 > scoreTeam2){
-            Referee.matchList.get(matchToUpdate).setWinningTeam(Referee.matchList.get(matchToUpdate).getTeamOne().getTeamNumber());
+            Referee.matchList.get(matchToUpdate).setWinningTeam(Referee.matchList.get
+                    (matchToUpdate).getTeamOne().getTeamNumber());
             Referee.matchList.get(matchToUpdate).setWinningScore(scoreTeam1);
             Referee.winningTeams.add(Referee.matchList.get(matchToUpdate).getTeamOne());
         }
 
         if(scoreTeam2 > scoreTeam1){
-            Referee.matchList.get(matchToUpdate).setWinningTeam(Referee.matchList.get(matchToUpdate).getTeamTwo().getTeamNumber());
+            Referee.matchList.get(matchToUpdate).setWinningTeam(Referee.matchList.get
+                    (matchToUpdate).getTeamTwo().getTeamNumber());
             Referee.matchList.get(matchToUpdate).setWinningScore(scoreTeam2);
             Referee.winningTeams.add(Referee.matchList.get(matchToUpdate).getTeamTwo());
         }

@@ -52,7 +52,7 @@ public class Referee {
     }
 
     public static void updateMatchWithTeamScores(){
-        MatchBuildUpdate.assignScoresToTeams();
+        MatchBuildUpdate.assignWinOrLossToTeams();
     }
 
 }
