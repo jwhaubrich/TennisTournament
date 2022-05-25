@@ -1,9 +1,12 @@
 package joeco.context_displays;
 
 import joeco.tournament_configurations.MatchBuildUpdate;
+import joeco.tournament_objects.SingleMatch;
 import joeco.tournament_organizer.Referee;
 
-import static joeco.tournament_configurations.MatchBuildUpdate.gMatchCountDown;
+import java.util.ArrayList;
+
+import static joeco.tournamentsimulation_run.TournamentInitializer.gMatchCountDown;
 import static joeco.utils.SharedVariables.teamSittingOutCheck;
 
 public class InfoContextDisplay {
@@ -17,7 +20,7 @@ public class InfoContextDisplay {
     }
 
     public static void normalOrFinalRoundChecker(){
-        System.out.println("InfoContextD - gMatchCountDown variable:"+gMatchCountDown);
+        //System.out.println("InfoContextD - gMatchCountDown variable:"+gMatchCountDown);
         if (((gMatchCountDown == 0)||(gMatchCountDown==1)) && (teamSittingOutCheck==false)){
             System.out.println("__________FINAL Round:__________");
         } else {
@@ -29,6 +32,10 @@ public class InfoContextDisplay {
     public static void displayTeamWinnerInformation() {
         PostMatchContextDisplay.displayTeamWinnerInformation();
         PostMatchContextDisplay.sittingOutTeamChecker();
+    }
+
+    public static void resetNumberOfRound(){
+        numberOfRound = 1;
     }
 
 }

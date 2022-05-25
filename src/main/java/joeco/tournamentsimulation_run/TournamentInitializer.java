@@ -5,11 +5,13 @@ import joeco.tournament_configurations.TeamsBuilder;
 import joeco.tournament_configurations.MatchBuildUpdate;
 import joeco.tournament_organizer.Referee;
 import joeco.context_displays.InfoContextDisplay;
+import joeco.utils.SharedVariables;
 
 import java.util.Scanner;
 
 public class TournamentInitializer {
     private static final Scanner userInput = new Scanner(System.in);
+    public static int gMatchCountDown;
     
     public static void main(String[] args) {
         initializeTennisTournament();
@@ -17,27 +19,23 @@ public class TournamentInitializer {
     
     private static void initializeTennisTournament(){
         int totalNumberOfTeams; //depending on how I use this variable I might not need the variable
+
         //in the first place, just the TournamentBuilder.getNumberOfTeams
 
-
             TournamentBuilder.setNumberOfTeams(); //global total matches is set here
+            gMatchCountDown = TournamentBuilder.getNumberOfTeams()/2;
             TournamentBuilder.setTotalPlayersOnTeam();
             totalNumberOfTeams = TournamentBuilder.getNumberOfTeams();
             TeamsBuilder.createInitialTeamList();
             //System.out.println("Manual team initialization or automatic?"); //go with automatic first
             TeamsBuilder.addInfoToTeams();
             //System.out.println("Manual match creation or automatic?"); //go with automatic first
-            Referee.randomizeTeamsList();
+            Referee.randomizeTeamsList(TeamsBuilder.getTeamList());
             Referee.createInitialMatches();
-            TournamentInitializer.playThroughTeamsLoop();//program works up till here
+            TournamentInitializer.playTournament();//program works up till here
     }
 
-    private static void playThroughTeamsLoop(){ // 2 rounds, 1 final round, 6 teams
-        InfoContextDisplay.displayPreMatchInformation();
-        Referee.updateMatchWithTeamScores();
-        InfoContextDisplay.displayTeamWinnerInformation();//program works up till here w/ gMatchCountDown
-        MatchBuildUpdate.createNextTeamMatches();
-
+    private static void playTournament(){ // 2 rounds, 1 final round, 6 teams
         InfoContextDisplay.displayPreMatchInformation();
         Referee.updateMatchWithTeamScores();
         InfoContextDisplay.displayTeamWinnerInformation();
@@ -46,6 +44,12 @@ public class TournamentInitializer {
         InfoContextDisplay.displayPreMatchInformation();
         Referee.updateMatchWithTeamScores();
         InfoContextDisplay.displayTeamWinnerInformation();
+        MatchBuildUpdate.createNextTeamMatches();
+
+        InfoContextDisplay.displayPreMatchInformation();
+        Referee.updateMatchWithTeamScores();
+        InfoContextDisplay.displayTeamWinnerInformation();
+        TournamentInitializer.checkIfToRestartTournament();
     }
 
     //not using this method yet
@@ -80,7 +84,13 @@ public class TournamentInitializer {
 
     private static void resetProgram(){
         System.out.println("\nTennis Tournament Simulation has been restarted...\n");
+        TournamentBuilder.resetTeamInfo();
         TeamsBuilder.clearTeamList();
+        Referee.clearRandomizedTeams();
+        MatchBuildUpdate.clearGlobalMatchList();
+        InfoContextDisplay.resetNumberOfRound();
+
+        TournamentInitializer.initializeTennisTournament();
     }
     
 }

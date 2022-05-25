@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static joeco.tournament_organizer.Referee.*;
+import static joeco.tournamentsimulation_run.TournamentInitializer.gMatchCountDown;
 import static joeco.utils.SharedVariables.sittingOutTeam;
 import static joeco.utils.SharedVariables.teamSittingOutCheck;
 import static joeco.utils.SharedVariables.gListOfMatches;
@@ -18,7 +19,7 @@ System.out.println("MatchBuildUpdate - updateCounter variable:" +updateCounter);
 */
 public class MatchBuildUpdate {
     public static ArrayList<SingleTeam> gListWinningTeams = new ArrayList<>();
-    public static int gMatchCountDown = TournamentBuilder.getNumberOfTeams()/2;
+    //;
     public static int matchToUpdate;
     public static int scoreTeam1;
     public static int scoreTeam2;
@@ -128,5 +129,13 @@ public class MatchBuildUpdate {
         }
 
         gListWinningTeams.clear(); //clears out everything in the winning teams array to be used with the next winners
+    }
+
+    public static void clearGlobalMatchList(){
+        gListOfMatches.clear();
+    }
+
+    public static void resetGMatchCountDown(){
+        gMatchCountDown = 100;
     }
 }

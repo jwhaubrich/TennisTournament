@@ -1,15 +1,18 @@
 package joeco.tournament_configurations;
 
+import joeco.tournamentsimulation_run.TournamentInitializer;
+
 import java.util.Scanner;
 
 public class TournamentBuilder {
     private static int totalNumberOfTeams;
     private static int totalPlayersOnTeam;
     private static final Scanner input = new Scanner(System.in);
-    public static int gTotalMatches; //reviewed&updated5/24
-    
+    public static int gTotalMatches;
+    private static boolean numberOfTeamsSetCheck = false;
+    private static boolean playersPerTeamCheck = false;
+
     public static void setNumberOfTeams(){
-        boolean numberOfTeamsSetCheck = false;
 
         while(!numberOfTeamsSetCheck){
             System.out.println("How many teams are playing? (Enter an even number): ");
@@ -28,14 +31,18 @@ public class TournamentBuilder {
                 totalNumberOfTeams = 0;
             }
             if(totalNumberOfTeams ==2){
-                MatchBuildUpdate.gMatchCountDown = 1;
+                TournamentInitializer.gMatchCountDown = 1;
             }
         }
         gTotalMatches = totalNumberOfTeams-1;
     }
 
+    public static void resetTeamInfo(){
+        numberOfTeamsSetCheck = false;
+        playersPerTeamCheck = false;
+    }
+
     public static void setTotalPlayersOnTeam(){
-        boolean playersPerTeamCheck = false;
 
         while(!playersPerTeamCheck) {
             System.out.println("Will this tournament be for 2 or 4 player teams?: ");

@@ -2,7 +2,7 @@ package joeco.context_displays;
 
 import joeco.tournament_organizer.Referee;
 
-import static joeco.tournament_configurations.MatchBuildUpdate.gMatchCountDown;
+import static joeco.tournamentsimulation_run.TournamentInitializer.gMatchCountDown;
 import static joeco.utils.SharedVariables.sittingOutTeam;
 import static joeco.utils.SharedVariables.teamSittingOutCheck;
 import static joeco.utils.SharedVariables.gListOfMatches;
