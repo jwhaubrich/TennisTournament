@@ -2,7 +2,7 @@ package joeco.context_displays;
 
 import joeco.tournament_organizer.Referee;
 
-import static joeco.tournament_configurations.TournamentBuilder.gTotalMatches;
+import static joeco.tournament_configurations.MatchBuildUpdate.gMatchCountDown;
 import static joeco.utils.SharedVariables.sittingOutTeam;
 import static joeco.utils.SharedVariables.teamSittingOutCheck;
 import static joeco.utils.SharedVariables.gListOfMatches;
@@ -10,13 +10,16 @@ import static joeco.utils.SharedVariables.gListOfMatches;
 public class PostMatchContextDisplay {
 
     public static void displayTeamWinnerInformation() {
-        System.out.println("Inside PostMatchContextDisplay class");
         System.out.println("\n***Match Information with Team Winners***");
 
-        if ((gListOfMatches.size() == 1) && teamSittingOutCheck == false) {
+        //System.out.println("PostMCD - gMatchCountDown variable: "+gMatchCountDown);
+        //you want the number of teams that were at the beginning
+
+
+        if ((gMatchCountDown == 0) && teamSittingOutCheck == false) { //where does gLIstOfMatches get updated
             System.out.println("TEAM " + gListOfMatches.get(0).getWinningTeam() + " is the WINNER of the Tennis Tournament!");
         } else {
-            for (int i = 0; gTotalMatches > i; i++) {
+            for (int i = 0; gListOfMatches.size() > i; i++) {
                 System.out.println("Match " + gListOfMatches.get(i).getMatchNumber() + ": Team "
                         + gListOfMatches.get(i).getTeamOne().getTeamNumber() + " vs Team " + gListOfMatches.get(i).getTeamTwo().getTeamNumber() +
                         ".\n\t Winner is Team " + gListOfMatches.get(i).getWinningTeam() + ", with a score of: " + gListOfMatches.get(i).getWinningScore() + "\n");

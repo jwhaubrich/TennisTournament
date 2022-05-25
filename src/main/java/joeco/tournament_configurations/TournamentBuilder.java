@@ -21,11 +21,14 @@ public class TournamentBuilder {
                 totalNumberOfTeams = 1;
             }
 
-            if (totalNumberOfTeams % 2 == 0) {
+            if (totalNumberOfTeams % 2 == 0) { //this statement ensures that the user enters even number
                 numberOfTeamsSetCheck = true;
             } else {
                 System.out.println("***Warning***: Please enter an even number.\n");
                 totalNumberOfTeams = 0;
+            }
+            if(totalNumberOfTeams ==2){
+                MatchBuildUpdate.gMatchCountDown = 1;
             }
         }
         gTotalMatches = totalNumberOfTeams-1;

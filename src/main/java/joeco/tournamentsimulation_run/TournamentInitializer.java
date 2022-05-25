@@ -19,32 +19,31 @@ public class TournamentInitializer {
         int totalNumberOfTeams; //depending on how I use this variable I might not need the variable
         //in the first place, just the TournamentBuilder.getNumberOfTeams
 
-            //initialize the game!
-            //initial team setup for tournament
-            TournamentBuilder.setNumberOfTeams();
+
+            TournamentBuilder.setNumberOfTeams(); //global total matches is set here
             TournamentBuilder.setTotalPlayersOnTeam();
             totalNumberOfTeams = TournamentBuilder.getNumberOfTeams();
-            //team list creation
             TeamsBuilder.createInitialTeamList();
             //System.out.println("Manual team initialization or automatic?"); //go with automatic first
             TeamsBuilder.addInfoToTeams();
             //System.out.println("Manual match creation or automatic?"); //go with automatic first
             Referee.randomizeTeamsList();
             Referee.createInitialMatches();
-            TournamentInitializer.playThroughTeamsLoop();
-
+            TournamentInitializer.playThroughTeamsLoop();//program works up till here
     }
 
-    private static void playThroughTeamsLoop(){
-        InfoContextDisplay.displayPreMatchInformation();// 1 rounds
+    private static void playThroughTeamsLoop(){ // 2 rounds, 1 final round, 6 teams
+        InfoContextDisplay.displayPreMatchInformation();
+        Referee.updateMatchWithTeamScores();
+        InfoContextDisplay.displayTeamWinnerInformation();//program works up till here w/ gMatchCountDown
+        MatchBuildUpdate.createNextTeamMatches();
+
+        InfoContextDisplay.displayPreMatchInformation();
         Referee.updateMatchWithTeamScores();
         InfoContextDisplay.displayTeamWinnerInformation();
         MatchBuildUpdate.createNextTeamMatches();
-        InfoContextDisplay.displayPreMatchInformation();// 2 rounds
-        Referee.updateMatchWithTeamScores();
-        InfoContextDisplay.displayTeamWinnerInformation();
-        MatchBuildUpdate.createNextTeamMatches();
-        InfoContextDisplay.displayPreMatchInformation();// final round, 6 teams playing
+
+        InfoContextDisplay.displayPreMatchInformation();
         Referee.updateMatchWithTeamScores();
         InfoContextDisplay.displayTeamWinnerInformation();
     }

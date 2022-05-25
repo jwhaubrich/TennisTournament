@@ -13,35 +13,41 @@ import java.util.Random;
 public class Referee {
     private static ArrayList<SingleTeam> randomizedTeamList = new ArrayList<>(); //reviewed&updated5/24
     private static int totalTeams = TournamentBuilder.getNumberOfTeams(); //reviewed&updated5/24
-    
-    public static void randomizeTeamsList(){ //function checked and verified 5/18
+
+
+    public static void randomizeTeamsList(){ //maybe get passed in the list of random teams
         Random randomNumberCreator = new Random();
         ArrayList <Integer> randomNumberList = new ArrayList<>();
+        boolean ranOnceCheck = false; //would this keep getting set to false every time the method is called? put inside method?
         int randomTeamNumber;
 
-        for(int i = 0; totalTeams > i; i++) {
-            randomTeamNumber = randomNumberCreator.nextInt(totalTeams);
-
-            while (randomNumberList.contains(randomTeamNumber)) { //find a new random team to put into the list
+        if(ranOnceCheck==false){
+            for (int i = 0; totalTeams > i; i++) {
                 randomTeamNumber = randomNumberCreator.nextInt(totalTeams);
+
+                while (randomNumberList.contains(randomTeamNumber)) { //find a new random team to put into the list
+                    randomTeamNumber = randomNumberCreator.nextInt(totalTeams);
+                }
+                randomizedTeamList.add(TeamsBuilder.getTeamList().get(randomTeamNumber));
+                randomNumberList.add(randomTeamNumber);
             }
-            randomizedTeamList.add(TeamsBuilder.getTeamList().get(randomTeamNumber));
-            randomNumberList.add(randomTeamNumber);
+            randomNumberList.clear();
+            ranOnceCheck = true;
         }
-        randomNumberList.clear();
+
     }
 
-    public static void createInitialMatches(){ //function checked and verified 5/18
+    public static void createInitialMatches(){
 
         for(int i = 0; totalTeams > i; i = i + 2){
             gListOfMatches.add(new SingleMatch(randomizedTeamList.get(i), randomizedTeamList.get(i+1)));
-        }
+        };
 
-        for(int i = 0; gTotalMatches > i; i++){
+        for(int i = 0; gListOfMatches.size() > i; i++){
             gListOfMatches.get(i).setMatchNumber(i+1);
         }
 
-        //maybe put here to clear out the randomizedTeamList?
+        randomizedTeamList.clear();
     }
 
     public static void updateMatchWithTeamScores(){
