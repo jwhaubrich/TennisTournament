@@ -1,11 +1,5 @@
 package joeco.context_displays;
 
-import joeco.tournament_configurations.MatchBuildUpdate;
-import joeco.tournament_objects.SingleMatch;
-import joeco.tournament_organizer.Referee;
-
-import java.util.ArrayList;
-
 import static joeco.tournamentsimulation_run.TournamentInitializer.gMatchCountDown;
 import static joeco.utils.SharedVariables.teamSittingOutCheck;
 

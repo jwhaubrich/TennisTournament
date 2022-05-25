@@ -69,7 +69,7 @@ public class MatchBuildUpdate {
             updateCounter++;
         }
         gMatchCountDown = gListWinningTeams.size()/2;
-        //System.out.println("MatchBuildUpdate - gMatchCountDown variable:" +gMatchCountDown);
+        System.out.println("MatchBuildUpdate - gMatchCountDown variable:" +gMatchCountDown);
     }
 
     public static void updateTeamScoresInMatch(){
@@ -131,11 +131,9 @@ public class MatchBuildUpdate {
         gListWinningTeams.clear(); //clears out everything in the winning teams array to be used with the next winners
     }
 
-    public static void clearGlobalMatchList(){
+    public static void clearMatchData(){
         gListOfMatches.clear();
+        gListWinningTeams.clear();
     }
 
-    public static void resetGMatchCountDown(){
-        gMatchCountDown = 100;
-    }
 }

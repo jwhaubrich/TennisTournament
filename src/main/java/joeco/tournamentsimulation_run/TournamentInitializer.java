@@ -87,7 +87,7 @@ public class TournamentInitializer {
         TournamentBuilder.resetTeamInfo();
         TeamsBuilder.clearTeamList();
         Referee.clearRandomizedTeams();
-        MatchBuildUpdate.clearGlobalMatchList();
+        MatchBuildUpdate.clearMatchData();
         InfoContextDisplay.resetNumberOfRound();
 
         TournamentInitializer.initializeTennisTournament();
