@@ -12,7 +12,7 @@ public class PostMatchContextDisplay {
     public static void displayTeamWinnerInformation() {
         System.out.println("\n***Match Information with Team Winners***");
 
-        if ((gMatchCountDown == 0) && teamSittingOutCheck == false) {
+        if ((gMatchCountDown == 0) && !teamSittingOutCheck) {
             System.out.println("TEAM " + gListOfMatches.get(0).getWinningTeam() + " is the WINNER of the Tennis Tournament!");
         } else {
             for (int i = 0; gListOfMatches.size() > i; i++) {
@@ -24,7 +24,7 @@ public class PostMatchContextDisplay {
     }
 
     public static void sittingOutTeamChecker(){
-        if (teamSittingOutCheck == true) {
+        if (teamSittingOutCheck) {
             System.out.println("The team that sat out this round was: Team " + sittingOutTeam.getTeamNumber() + "\n");
         }
     }

@@ -24,7 +24,7 @@ public class PreMatchContextDisplay {
 
 
     public static void sittingOutTeamChecker(){
-        if(teamSittingOutCheck==true){
+        if(teamSittingOutCheck){
             System.out.println("\n***Team "+sittingOutTeam.getTeamNumber()+" is sitting out this round***");
         }
     }

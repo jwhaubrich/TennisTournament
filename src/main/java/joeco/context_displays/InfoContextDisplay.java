@@ -14,7 +14,7 @@ public class InfoContextDisplay {
     }
 
     public static void normalOrFinalRoundChecker(){
-        if (((gMatchCountDown == 0)||(gMatchCountDown==1)) && (teamSittingOutCheck==false)){
+        if (((gMatchCountDown == 0)||(gMatchCountDown==1)) && (!teamSittingOutCheck)){
             System.out.println("__________FINAL Round:__________");
         } else {
             System.out.println("_______________________________________________________________________");

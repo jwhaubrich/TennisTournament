@@ -23,7 +23,7 @@ public class Referee {
             for (int i = 0; totalTeams > i; i++) {
                 randomTeamNumber = randomNumberCreator.nextInt(totalTeams);
 
-                while (randomNumberList.contains(randomTeamNumber)) { //find a new random team to put into the list
+                while (randomNumberList.contains(randomTeamNumber)) {
                     randomTeamNumber = randomNumberCreator.nextInt(totalTeams);
                 }
                 randomizedTeamList.add(initialTeamList.get(randomTeamNumber));
