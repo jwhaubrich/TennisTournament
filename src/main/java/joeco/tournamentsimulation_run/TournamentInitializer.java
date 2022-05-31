@@ -35,8 +35,8 @@ public class TournamentInitializer {
     }
 
     private static void playTournament(){ // 2 rounds, 1 final round, 6 teams
-        System.out.println("total matches to play variable: "+ TournamentBuilder.getTotalMatchesToPlay());
-        System.out.println("total number of matches played so far variable: "+ gMatchesPlayed);
+        //System.out.println("total matches to play variable: "+ TournamentBuilder.getTotalMatchesToPlay());
+       // System.out.println("total number of matches played so far variable: "+ gMatchesPlayed);
 
 
             while (gMatchesPlayed < TournamentBuilder.getTotalMatchesToPlay() - 1) {
@@ -48,18 +48,18 @@ public class TournamentInitializer {
                     InfoContextDisplay.displayTeamWinnerInformation();
                     TournamentInitializer.checkIfToRestartTournament();
                 }
-                System.out.println("*****inside of while loop");
-                System.out.println("total matches to play variable: " + TournamentBuilder.getTotalMatchesToPlay());
-                System.out.println("total number of matches played so far variable: " + gMatchesPlayed);
+                //System.out.println("*****inside of while loop");
+                //System.out.println("total matches to play variable: " + TournamentBuilder.getTotalMatchesToPlay());
+                //System.out.println("total number of matches played so far variable: " + gMatchesPlayed);
                 InfoContextDisplay.displayPreMatchInformation();
                 Referee.updateMatchWithTeamScores();
                 InfoContextDisplay.displayTeamWinnerInformation();
                 MatchBuildUpdate.createNextTeamMatches();
                 //System.out.println("2ndTournamentInitializer - gMatchCountDown variable: "+gMatchCountDown);
-                System.out.println("total number of matches played so far " + gMatchesPlayed);
+                //System.out.println("total number of matches played so far " + gMatchesPlayed);
             }
 
-        System.out.println("*****outside of while loop");
+        //System.out.println("*****outside of while loop");
         InfoContextDisplay.displayPreMatchInformation();
         Referee.updateMatchWithTeamScores();
         InfoContextDisplay.displayTeamWinnerInformation();
@@ -101,9 +101,11 @@ public class TournamentInitializer {
         System.out.println("\nTennis Tournament Simulation has been restarted...\n");
         TournamentBuilder.resetTeamInfo();
         TeamsBuilder.clearTeamList();
+        //System.out.println("size of randomized teams list before clearing it: "+Referee.getRandomizedTeamList().size());
         Referee.clearRandomizedTeams();
         MatchBuildUpdate.clearMatchData();
         InfoContextDisplay.resetNumberOfRound();
+        //System.out.println("size of randomized teams list after clearing it: "+Referee.getRandomizedTeamList().size());
 
         TournamentInitializer.initializeTennisTournament();
     }

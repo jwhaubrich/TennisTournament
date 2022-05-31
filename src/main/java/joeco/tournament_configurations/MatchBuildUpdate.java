@@ -69,7 +69,7 @@ public class MatchBuildUpdate {
             updateCounter++;
         }
         gMatchCountDown = gListWinningTeams.size()/2;
-        System.out.println("MatchBuildUpdate - gMatchCountDown variable:" +gMatchCountDown);
+        //System.out.println("MatchBuildUpdate - gMatchCountDown variable:" +gMatchCountDown);
     }
 
     public static void updateTeamScoresInMatch(){

@@ -13,25 +13,24 @@ public class Referee {
     private static ArrayList<SingleTeam> randomizedTeamList = new ArrayList<>(); //reviewed&updated5/24
     private static int totalTeams = TournamentBuilder.getNumberOfTeams(); //reviewed&updated5/24
 
-    public static void randomizeTeamsList(ArrayList<SingleTeam> initialTeamList){ //maybe get passed in the list of random teams
+    public static void randomizeTeamsList(ArrayList<SingleTeam> initialTeamList){
         Random randomNumberCreator = new Random();
         ArrayList <Integer> randomNumberList = new ArrayList<>();
-        boolean ranOnceCheck = false; //would this keep getting set to false every time the method is called? put inside method?
         int randomTeamNumber;
+        totalTeams = TournamentBuilder.getNumberOfTeams();
+        //System.out.println("totalTeams: "+totalTeams);
 
-        if(ranOnceCheck==false){
             for (int i = 0; totalTeams > i; i++) {
                 randomTeamNumber = randomNumberCreator.nextInt(totalTeams);
 
                 while (randomNumberList.contains(randomTeamNumber)) { //find a new random team to put into the list
                     randomTeamNumber = randomNumberCreator.nextInt(totalTeams);
                 }
+                //System.out.println("randomTeamNumber:"+randomTeamNumber);
                 randomizedTeamList.add(initialTeamList.get(randomTeamNumber));
                 randomNumberList.add(randomTeamNumber);
             }
             randomNumberList.clear();
-            ranOnceCheck = true;
-        }
 
     }
 
