@@ -1,23 +1,24 @@
 package joeco.tournament_organizer;
 
 import static joeco.utils.SharedVariables.gListOfMatches;
-import joeco.tournament_configurations.TournamentBuilder;
-import joeco.tournament_configurations.MatchBuildUpdate;
+
+import joeco.tournament_configurations.TeamBuilder;
+import joeco.tournament_configurations.MatchUpdater;
 import joeco.tournament_objects.SingleMatch;
 import joeco.tournament_objects.SingleTeam;
-import joeco.tournament_configurations.TeamsBuilder;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Referee {
     private static ArrayList<SingleTeam> randomizedTeamList = new ArrayList<>(); //reviewed&updated5/24
-    private static int totalTeams = TournamentBuilder.getNumberOfTeams(); //reviewed&updated5/24
+    private static int totalTeams = TeamBuilder.getNumberOfTeams(); //reviewed&updated5/24
 
     public static void randomizeTeamsList(ArrayList<SingleTeam> initialTeamList){
         Random randomNumberCreator = new Random();
         ArrayList <Integer> randomNumberList = new ArrayList<>();
         int randomTeamNumber;
-        totalTeams = TournamentBuilder.getNumberOfTeams();
+        totalTeams = TeamBuilder.getNumberOfTeams();
         //System.out.println("totalTeams: "+totalTeams);
 
             for (int i = 0; totalTeams > i; i++) {
@@ -48,7 +49,7 @@ public class Referee {
     }
 
     public static void updateMatchWithTeamScores(){
-        MatchBuildUpdate.assignWinOrLossToTeams();
+        MatchUpdater.assignWinOrLossToTeams();
     }
 
     public static ArrayList<SingleTeam> getRandomizedTeamList() {

@@ -17,9 +17,9 @@ import static joeco.utils.SharedVariables.gListOfMatches;
 System.out.println("MatchBuildUpdate - gMatchCountDown variable:" +gMatchCountDown);
 System.out.println("MatchBuildUpdate - updateCounter variable:" +updateCounter);
 */
-public class MatchBuildUpdate {
+
+public class MatchUpdater {
     public static ArrayList<SingleTeam> gListWinningTeams = new ArrayList<>();
-    //;
     public static int matchToUpdate;
     public static int scoreTeam1;
     public static int scoreTeam2;
@@ -46,8 +46,8 @@ public class MatchBuildUpdate {
                     scoreTeam2 = Integer.parseInt((input.nextLine()));
                     System.out.println("Setting scores for teams...");
 
-                    MatchBuildUpdate.updateTeamScoresInMatch();
-                    MatchBuildUpdate.updateWinningTeamListWithTeamInfo();
+                    MatchUpdater.updateTeamScoresInMatch();
+                    MatchUpdater.updateWinningTeamListWithTeamInfo();
                     //maybe refactor method above to just do this once and not each time the
                     //scores are set for the team
                 }
@@ -61,15 +61,15 @@ public class MatchBuildUpdate {
                 scoreTeam2 = Integer.parseInt((input.nextLine()));
                 System.out.println("Setting scores for teams...");
 
-                MatchBuildUpdate.updateTeamScoresInMatch();
-                MatchBuildUpdate.updateWinningTeamListWithTeamInfo();
+                MatchUpdater.updateTeamScoresInMatch();
+                MatchUpdater.updateWinningTeamListWithTeamInfo();
 
                 return;
             }
             updateCounter++;
         }
         gMatchCountDown = gListWinningTeams.size()/2;
-        //System.out.println("MatchBuildUpdate - gMatchCountDown variable:" +gMatchCountDown);
+       // System.out.println("MatchBuildUpdate - gMatchCountDown variable:" +gMatchCountDown);
     }
 
     public static void updateTeamScoresInMatch(){
@@ -82,14 +82,14 @@ public class MatchBuildUpdate {
             gListOfMatches.get(matchToUpdate).setWinningTeam(gListOfMatches.get
                     (matchToUpdate).getTeamOne().getTeamNumber());
             gListOfMatches.get(matchToUpdate).setWinningScore(scoreTeam1);
-            MatchBuildUpdate.gListWinningTeams.add(gListOfMatches.get(matchToUpdate).getTeamOne());
+            MatchUpdater.gListWinningTeams.add(gListOfMatches.get(matchToUpdate).getTeamOne());
         }
 
         if(scoreTeam2 > scoreTeam1){
             gListOfMatches.get(matchToUpdate).setWinningTeam(gListOfMatches.get
                     (matchToUpdate).getTeamTwo().getTeamNumber());
             gListOfMatches.get(matchToUpdate).setWinningScore(scoreTeam2);
-            MatchBuildUpdate.gListWinningTeams.add(gListOfMatches.get(matchToUpdate).getTeamTwo());
+            MatchUpdater.gListWinningTeams.add(gListOfMatches.get(matchToUpdate).getTeamTwo());
         }
     }
 
@@ -97,39 +97,7 @@ public class MatchBuildUpdate {
     //after I updated the totalMatches variable that was in Referee and I put it in TournamentBuilder
     //I don't think this method will work anymore
 
-    public static void createNextTeamMatches(){
-        //I could see about combining this method with the randomize teams method in Referee.randomizeTeamsList
-        gListOfMatches.clear();
-        Referee.getRandomizedTeamList().clear();
-        int newTotalTeams = gListWinningTeams.size();
 
-
-        for(int i = 0; newTotalTeams > i; i++){
-            Referee.getRandomizedTeamList().add(gListWinningTeams.get(i));
-        }
-
-        if(teamSittingOutCheck==true){
-            Referee.getRandomizedTeamList().add(sittingOutTeam);
-            teamSittingOutCheck = false;
-        }
-
-        if((getRandomizedTeamList().size()%2)==1){
-            sittingOutTeam = getRandomizedTeamList().get((getRandomizedTeamList().size()-1));
-            getRandomizedTeamList().remove((getRandomizedTeamList().size()-1));
-            newTotalTeams = newTotalTeams - 1;
-            teamSittingOutCheck = true;
-        }
-
-        for(int i = 0; newTotalTeams  > i; i = i + 2){ //algorithm to create the matches(team vs team). functioning/tested.
-            gListOfMatches.add(new SingleMatch(getRandomizedTeamList().get(i), getRandomizedTeamList().get(i+1)));
-        }
-
-        for(int i = 0; gMatchCountDown  > i; i++){ //algorithm that sets match numbers to each match.
-            gListOfMatches.get(i).setMatchNumber(i+1);
-        }
-
-        gListWinningTeams.clear(); //clears out everything in the winning teams array to be used with the next winners
-    }
 
     public static void clearMatchData(){
         gListOfMatches.clear();

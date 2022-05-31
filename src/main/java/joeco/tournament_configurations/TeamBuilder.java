@@ -1,16 +1,21 @@
 package joeco.tournament_configurations;
 
+import joeco.tournament_objects.SingleTeam;
 import joeco.tournamentsimulation_run.TournamentInitializer;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TournamentBuilder {
+public class TeamBuilder {
+
+    private static ArrayList<SingleTeam> teamList = new ArrayList<>();
+    private static boolean numberOfTeamsSetCheck = false;
     private static int totalNumberOfTeams;
-    private static int totalPlayersOnTeam;
     private static final Scanner input = new Scanner(System.in);
     public static int gTotalMatchesToPlay;
-    private static boolean numberOfTeamsSetCheck = false;
     private static boolean playersPerTeamCheck = false;
+    private static int totalPlayersOnTeam;
+
 
     public static void setNumberOfTeams(){
 
@@ -37,11 +42,6 @@ public class TournamentBuilder {
         gTotalMatchesToPlay = totalNumberOfTeams-1;
     }
 
-    public static void resetTeamInfo(){
-        numberOfTeamsSetCheck = false;
-        playersPerTeamCheck = false;
-    }
-
     public static void setTotalPlayersOnTeam(){
 
         while(!playersPerTeamCheck) {
@@ -59,10 +59,25 @@ public class TournamentBuilder {
                     playersPerTeamCheck = true;
                 }
             }
-             else {
+            else {
                 System.out.println("***Warning***: Please select 2 or 4.\n");
             }
         }
+    }
+
+    public static void createInitialTeamList(){
+        for(int i = 1; TeamBuilder.getNumberOfTeams() >= i; i++){
+            teamList.add(new SingleTeam(i));
+        }
+    }
+
+    public static void resetTeamInfo(){
+        numberOfTeamsSetCheck = false;
+        playersPerTeamCheck = false;
+    }
+
+    public static void clearTeamList() {
+        TeamBuilder.teamList.clear();
     }
 
     public static int getTotalPlayersOnTeam(){
@@ -76,5 +91,10 @@ public class TournamentBuilder {
     public static int getTotalMatchesToPlay(){
         return gTotalMatchesToPlay;
     }
+
+    public static ArrayList<SingleTeam> getTeamList() {
+        return teamList;
+    }
+
 
 }

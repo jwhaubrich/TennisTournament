@@ -1,11 +1,8 @@
 package joeco.tournamentsimulation_run;
 
-import joeco.tournament_configurations.TournamentBuilder;
-import joeco.tournament_configurations.TeamsBuilder;
-import joeco.tournament_configurations.MatchBuildUpdate;
+import joeco.tournament_configurations.*;
 import joeco.tournament_organizer.Referee;
 import joeco.context_displays.InfoContextDisplay;
-import joeco.utils.SharedVariables;
 
 import java.util.Scanner;
 
@@ -22,14 +19,14 @@ public class TournamentInitializer {
     
     private static void initializeTennisTournament(){
 
-            TournamentBuilder.setNumberOfTeams(); //global total matches is set here
-            gMatchCountDown = TournamentBuilder.getNumberOfTeams()/2;
-            TournamentBuilder.setTotalPlayersOnTeam();
-            TeamsBuilder.createInitialTeamList();
+            TeamBuilder.setNumberOfTeams(); //global total matches is set here
+            gMatchCountDown = TeamBuilder.getNumberOfTeams()/2;
+            TeamBuilder.setTotalPlayersOnTeam();
+            TeamBuilder.createInitialTeamList();
             //System.out.println("Manual team initialization or automatic?"); //go with automatic first
-            TeamsBuilder.addInfoToTeams();
+            TeamUpdater.addInfoToTeams();
             //System.out.println("Manual match creation or automatic?"); //go with automatic first
-            Referee.randomizeTeamsList(TeamsBuilder.getTeamList());
+            Referee.randomizeTeamsList(TeamBuilder.getTeamList());
             Referee.createInitialMatches();
             TournamentInitializer.playTournament();//program works up till here
     }
@@ -39,7 +36,7 @@ public class TournamentInitializer {
        // System.out.println("total number of matches played so far variable: "+ gMatchesPlayed);
 
 
-            while (gMatchesPlayed < TournamentBuilder.getTotalMatchesToPlay() - 1) {
+            while (gMatchesPlayed < TeamBuilder.getTotalMatchesToPlay() - 1) {
                 //System.out.println("1stTournamentInitializer - gMatchCountDown variable: "+gMatchCountDown);
                 if(((gMatchCountDown== 0)||(gMatchCountDown==1)) && (teamSittingOutCheck==false)){
                     System.out.println("inside IF inside WHILE");
@@ -54,7 +51,7 @@ public class TournamentInitializer {
                 InfoContextDisplay.displayPreMatchInformation();
                 Referee.updateMatchWithTeamScores();
                 InfoContextDisplay.displayTeamWinnerInformation();
-                MatchBuildUpdate.createNextTeamMatches();
+                MatchBuilder.createNextTeamMatches();
                 //System.out.println("2ndTournamentInitializer - gMatchCountDown variable: "+gMatchCountDown);
                 //System.out.println("total number of matches played so far " + gMatchesPlayed);
             }
@@ -99,11 +96,10 @@ public class TournamentInitializer {
 
     private static void resetProgram(){
         System.out.println("\nTennis Tournament Simulation has been restarted...\n");
-        TournamentBuilder.resetTeamInfo();
-        TeamsBuilder.clearTeamList();
+        TeamUpdater.clearTeamData();
         //System.out.println("size of randomized teams list before clearing it: "+Referee.getRandomizedTeamList().size());
         Referee.clearRandomizedTeams();
-        MatchBuildUpdate.clearMatchData();
+        MatchUpdater.clearMatchData();
         InfoContextDisplay.resetNumberOfRound();
         //System.out.println("size of randomized teams list after clearing it: "+Referee.getRandomizedTeamList().size());
 
