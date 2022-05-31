@@ -5,43 +5,32 @@ import joeco.tournament_organizer.Referee;
 
 import static joeco.tournament_organizer.Referee.getRandomizedTeamList;
 import static joeco.tournamentsimulation_run.TournamentInitializer.gMatchCountDown;
-import static joeco.utils.SharedVariables.*;
 import static joeco.utils.SharedVariables.gListOfMatches;
 
 public class MatchBuilder {
-    public static void createNextTeamMatches(){
-        //I could see about combining this method with the randomize teams method in Referee.randomizeTeamsList
+    public static void createNextTeamMatch(){
         gListOfMatches.clear();
         Referee.getRandomizedTeamList().clear();
-        int newTotalTeams = MatchUpdater.gListWinningTeams.size();
+        TeamUpdater.updateTeamsForNextRound();
+        MatchBuilder.createNewMatches();
+    }
 
-
-        for(int i = 0; newTotalTeams > i; i++){
-            Referee.getRandomizedTeamList().add(MatchUpdater.gListWinningTeams.get(i));
-        }
-
-        if(teamSittingOutCheck==true){
-            Referee.getRandomizedTeamList().add(sittingOutTeam);
-            teamSittingOutCheck = false;
-        }
-
-        if((getRandomizedTeamList().size()%2)==1){
-            sittingOutTeam = getRandomizedTeamList().get((getRandomizedTeamList().size()-1));
-            getRandomizedTeamList().remove((getRandomizedTeamList().size()-1));
-            newTotalTeams = newTotalTeams - 1;
-            teamSittingOutCheck = true;
-        }
-
-        for(int i = 0; newTotalTeams  > i; i = i + 2){
+    public static void createNewRandMatches(){
+        for(int i = 0; TeamUpdater.getNewTotalTeams()  > i; i = i + 2){
             gListOfMatches.add(new SingleMatch(getRandomizedTeamList().get(i), getRandomizedTeamList().get(i+1)));
         }
+    }
 
+    public static void setMatchNumbers(){
         for(int i = 0; gMatchCountDown  > i; i++){
             gListOfMatches.get(i).setMatchNumber(i+1);
         }
-
-        MatchUpdater.gListWinningTeams.clear();
     }
 
+    public static void createNewMatches(){
+        MatchBuilder.createNewRandMatches();
+        MatchBuilder.setMatchNumbers();
+        MatchUpdater.gListWinningTeams.clear();
+    }
 
 }

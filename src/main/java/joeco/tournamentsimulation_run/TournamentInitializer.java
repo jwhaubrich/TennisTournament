@@ -39,7 +39,7 @@ public class TournamentInitializer {
                 InfoContextDisplay.displayPreMatchInformation();
                 Referee.updateMatchWithTeamScores();
                 InfoContextDisplay.displayTeamWinnerInformation();
-                MatchBuilder.createNextTeamMatches();
+                MatchBuilder.createNextTeamMatch();
             }
         InfoContextDisplay.displayPreMatchInformation();
         Referee.updateMatchWithTeamScores();
