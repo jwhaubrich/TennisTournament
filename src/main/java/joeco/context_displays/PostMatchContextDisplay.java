@@ -12,11 +12,7 @@ public class PostMatchContextDisplay {
     public static void displayTeamWinnerInformation() {
         System.out.println("\n***Match Information with Team Winners***");
 
-        //System.out.println("PostMCD - gMatchCountDown variable: "+gMatchCountDown);
-        //you want the number of teams that were at the beginning
-
-
-        if ((gMatchCountDown == 0) && teamSittingOutCheck == false) { //where does gLIstOfMatches get updated
+        if ((gMatchCountDown == 0) && teamSittingOutCheck == false) {
             System.out.println("TEAM " + gListOfMatches.get(0).getWinningTeam() + " is the WINNER of the Tennis Tournament!");
         } else {
             for (int i = 0; gListOfMatches.size() > i; i++) {

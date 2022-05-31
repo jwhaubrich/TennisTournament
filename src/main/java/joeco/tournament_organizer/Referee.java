@@ -11,15 +11,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Referee {
-    private static ArrayList<SingleTeam> randomizedTeamList = new ArrayList<>(); //reviewed&updated5/24
-    private static int totalTeams = TeamBuilder.getNumberOfTeams(); //reviewed&updated5/24
+    private static ArrayList<SingleTeam> randomizedTeamList = new ArrayList<>();
+    private static int totalTeams = TeamBuilder.getNumberOfTeams();
 
     public static void randomizeTeamsList(ArrayList<SingleTeam> initialTeamList){
         Random randomNumberCreator = new Random();
         ArrayList <Integer> randomNumberList = new ArrayList<>();
         int randomTeamNumber;
         totalTeams = TeamBuilder.getNumberOfTeams();
-        //System.out.println("totalTeams: "+totalTeams);
 
             for (int i = 0; totalTeams > i; i++) {
                 randomTeamNumber = randomNumberCreator.nextInt(totalTeams);
@@ -27,7 +26,6 @@ public class Referee {
                 while (randomNumberList.contains(randomTeamNumber)) { //find a new random team to put into the list
                     randomTeamNumber = randomNumberCreator.nextInt(totalTeams);
                 }
-                //System.out.println("randomTeamNumber:"+randomTeamNumber);
                 randomizedTeamList.add(initialTeamList.get(randomTeamNumber));
                 randomNumberList.add(randomTeamNumber);
             }
@@ -39,7 +37,7 @@ public class Referee {
 
         for(int i = 0; totalTeams > i; i = i + 2){
             gListOfMatches.add(new SingleMatch(randomizedTeamList.get(i), randomizedTeamList.get(i+1)));
-        };
+        }
 
         for(int i = 0; gListOfMatches.size() > i; i++){
             gListOfMatches.get(i).setMatchNumber(i+1);

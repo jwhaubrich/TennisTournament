@@ -1,6 +1,5 @@
 package joeco.tournament_objects;
 
-//this class has methods that aren't currently being used, but could be in the future
 public class SingleMatch {
     private SingleTeam teamOne;
     private SingleTeam teamTwo;
@@ -31,14 +30,6 @@ public class SingleMatch {
 
     public int getMatchNumber() {
         return this.matchNumber;
-    }
-
-    public void setTeamOne(SingleTeam teamOne) {
-        this.teamOne = teamOne;
-    }
-
-    public void setTeamTwo(SingleTeam teamTwo) {
-        this.teamTwo = teamTwo;
     }
 
     public void setWinningTeam(int winningTeam) {

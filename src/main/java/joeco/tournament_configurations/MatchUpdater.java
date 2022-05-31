@@ -1,22 +1,11 @@
 package joeco.tournament_configurations;
 
-import joeco.tournament_objects.SingleMatch;
 import joeco.tournament_objects.SingleTeam;
-import joeco.tournament_organizer.Referee;
-
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import static joeco.tournament_organizer.Referee.*;
 import static joeco.tournamentsimulation_run.TournamentInitializer.gMatchCountDown;
-import static joeco.utils.SharedVariables.sittingOutTeam;
-import static joeco.utils.SharedVariables.teamSittingOutCheck;
 import static joeco.utils.SharedVariables.gListOfMatches;
 
-/*System.out.println("***MatchBuildUpdate - gMatchCountDown variable: ***"+gMatchCountDown);
-System.out.println("MatchBuildUpdate - gMatchCountDown variable:" +gMatchCountDown);
-System.out.println("MatchBuildUpdate - updateCounter variable:" +updateCounter);
-*/
 
 public class MatchUpdater {
     public static ArrayList<SingleTeam> gListWinningTeams = new ArrayList<>();
@@ -31,13 +20,13 @@ public class MatchUpdater {
 
         System.out.println("\nYou will now assign scores to each team, depending on each match.");
 
-        while((updateCounter < gMatchCountDown)||(gMatchCountDown==0)) { //go through all the matches, updateCounter increase per match
+        while((updateCounter < gMatchCountDown)||(gMatchCountDown==0)) {
             System.out.println("\nType out the match number for which teams to update: ");
-            //ensures that the user only chooses a match from the ones that are available
+
             matchToUpdate = Integer.parseInt(input.nextLine()) - 1;
 
             if(gMatchCountDown!=0) {
-                if (0 <= matchToUpdate && matchToUpdate < gMatchCountDown) { //comeback: not sure if logic is right
+                if (0 <= matchToUpdate && matchToUpdate < gMatchCountDown) {
                     System.out.println("What is the score for Team "
                             + gListOfMatches.get(matchToUpdate).getTeamOne().getTeamNumber() + "?: ");
                     scoreTeam1 = Integer.parseInt((input.nextLine()));
@@ -48,11 +37,9 @@ public class MatchUpdater {
 
                     MatchUpdater.updateTeamScoresInMatch();
                     MatchUpdater.updateWinningTeamListWithTeamInfo();
-                    //maybe refactor method above to just do this once and not each time the
-                    //scores are set for the team
                 }
             }
-            else { //last match
+            else {
                 System.out.println("What is the score for Team "
                         + gListOfMatches.get(matchToUpdate).getTeamOne().getTeamNumber() + "?: ");
                 scoreTeam1 = Integer.parseInt((input.nextLine()));
@@ -69,7 +56,6 @@ public class MatchUpdater {
             updateCounter++;
         }
         gMatchCountDown = gListWinningTeams.size()/2;
-       // System.out.println("MatchBuildUpdate - gMatchCountDown variable:" +gMatchCountDown);
     }
 
     public static void updateTeamScoresInMatch(){
@@ -92,12 +78,6 @@ public class MatchUpdater {
             MatchUpdater.gListWinningTeams.add(gListOfMatches.get(matchToUpdate).getTeamTwo());
         }
     }
-
-    //must go through and refactor this method
-    //after I updated the totalMatches variable that was in Referee and I put it in TournamentBuilder
-    //I don't think this method will work anymore
-
-
 
     public static void clearMatchData(){
         gListOfMatches.clear();

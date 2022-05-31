@@ -19,44 +19,31 @@ public class TournamentInitializer {
     
     private static void initializeTennisTournament(){
 
-            TeamBuilder.setNumberOfTeams(); //global total matches is set here
+            TeamBuilder.setNumberOfTeams();
             gMatchCountDown = TeamBuilder.getNumberOfTeams()/2;
             TeamBuilder.setTotalPlayersOnTeam();
             TeamBuilder.createInitialTeamList();
-            //System.out.println("Manual team initialization or automatic?"); //go with automatic first
             TeamUpdater.addInfoToTeams();
-            //System.out.println("Manual match creation or automatic?"); //go with automatic first
             Referee.randomizeTeamsList(TeamBuilder.getTeamList());
             Referee.createInitialMatches();
-            TournamentInitializer.playTournament();//program works up till here
+            TournamentInitializer.playTournament();
     }
 
-    private static void playTournament(){ // 2 rounds, 1 final round, 6 teams
-        //System.out.println("total matches to play variable: "+ TournamentBuilder.getTotalMatchesToPlay());
-       // System.out.println("total number of matches played so far variable: "+ gMatchesPlayed);
-
+    private static void playTournament(){
 
             while (gMatchesPlayed < TeamBuilder.getTotalMatchesToPlay() - 1) {
-                //System.out.println("1stTournamentInitializer - gMatchCountDown variable: "+gMatchCountDown);
-                if(((gMatchCountDown== 0)||(gMatchCountDown==1)) && (teamSittingOutCheck==false)){
-                    System.out.println("inside IF inside WHILE");
+
+                if(((gMatchCountDown== 0)||(gMatchCountDown==1)) && (!teamSittingOutCheck)){
                     InfoContextDisplay.displayPreMatchInformation();
                     Referee.updateMatchWithTeamScores();
                     InfoContextDisplay.displayTeamWinnerInformation();
                     TournamentInitializer.checkIfToRestartTournament();
                 }
-                //System.out.println("*****inside of while loop");
-                //System.out.println("total matches to play variable: " + TournamentBuilder.getTotalMatchesToPlay());
-                //System.out.println("total number of matches played so far variable: " + gMatchesPlayed);
                 InfoContextDisplay.displayPreMatchInformation();
                 Referee.updateMatchWithTeamScores();
                 InfoContextDisplay.displayTeamWinnerInformation();
                 MatchBuilder.createNextTeamMatches();
-                //System.out.println("2ndTournamentInitializer - gMatchCountDown variable: "+gMatchCountDown);
-                //System.out.println("total number of matches played so far " + gMatchesPlayed);
             }
-
-        //System.out.println("*****outside of while loop");
         InfoContextDisplay.displayPreMatchInformation();
         Referee.updateMatchWithTeamScores();
         InfoContextDisplay.displayTeamWinnerInformation();
@@ -64,8 +51,7 @@ public class TournamentInitializer {
 
     }
 
-    //not using this method yet
-    private static int checkIfToRestartTournament(){
+    private static void checkIfToRestartTournament(){
         int userPlayAgainLooper = 0;
         int reinitializeTournamentCheck = 0;
         
@@ -87,7 +73,6 @@ public class TournamentInitializer {
                 closeProgram();
             }
         }
-        return reinitializeTournamentCheck;
     }
 
     private static void closeProgram(){
@@ -97,11 +82,10 @@ public class TournamentInitializer {
     private static void resetProgram(){
         System.out.println("\nTennis Tournament Simulation has been restarted...\n");
         TeamUpdater.clearTeamData();
-        //System.out.println("size of randomized teams list before clearing it: "+Referee.getRandomizedTeamList().size());
         Referee.clearRandomizedTeams();
         MatchUpdater.clearMatchData();
         InfoContextDisplay.resetNumberOfRound();
-        //System.out.println("size of randomized teams list after clearing it: "+Referee.getRandomizedTeamList().size());
+        TournamentInitializer.gMatchesPlayed = 0;
 
         TournamentInitializer.initializeTennisTournament();
     }

@@ -44,7 +44,6 @@ public class SingleTeam {
         this.numberOfMales = numberOfMales;
     }
 
-
     public void setNumberOfFemales(int numberOfFemales) {
         this.numberOfFemales = numberOfFemales;
     }

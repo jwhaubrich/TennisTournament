@@ -32,15 +32,15 @@ public class MatchBuilder {
             teamSittingOutCheck = true;
         }
 
-        for(int i = 0; newTotalTeams  > i; i = i + 2){ //algorithm to create the matches(team vs team). functioning/tested.
+        for(int i = 0; newTotalTeams  > i; i = i + 2){
             gListOfMatches.add(new SingleMatch(getRandomizedTeamList().get(i), getRandomizedTeamList().get(i+1)));
         }
 
-        for(int i = 0; gMatchCountDown  > i; i++){ //algorithm that sets match numbers to each match.
+        for(int i = 0; gMatchCountDown  > i; i++){
             gListOfMatches.get(i).setMatchNumber(i+1);
         }
 
-        MatchUpdater.gListWinningTeams.clear(); //clears out everything in the winning teams array to be used with the next winners
+        MatchUpdater.gListWinningTeams.clear();
     }
 
 

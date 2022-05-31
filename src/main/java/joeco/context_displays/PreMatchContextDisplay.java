@@ -8,8 +8,6 @@ import static joeco.utils.SharedVariables.gListOfMatches;
 
 public class PreMatchContextDisplay {
     public static void displayTeamVsTeamMatch(){
-        //System.out.println("PreMatchContext - gMatchCountDown variable:"+gMatchCountDown);
-        //System.out.println("Check that gListOfMatches is not empty: "+gListOfMatches.size());
         if(gMatchCountDown!=0) {
             for (int i = 0; gMatchCountDown > i; i++) {
                 System.out.println("Match " + (i + 1) + ": Team " + gListOfMatches.get(i).getTeamOne().getTeamNumber() + " vs Team "
