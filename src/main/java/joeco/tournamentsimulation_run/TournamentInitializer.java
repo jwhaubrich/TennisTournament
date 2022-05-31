@@ -9,23 +9,22 @@ import joeco.utils.SharedVariables;
 
 import java.util.Scanner;
 
+import static joeco.utils.SharedVariables.teamSittingOutCheck;
+
 public class TournamentInitializer {
     private static final Scanner userInput = new Scanner(System.in);
     public static int gMatchCountDown;
+    public static int gMatchesPlayed = 0;
     
     public static void main(String[] args) {
         initializeTennisTournament();
     }
     
     private static void initializeTennisTournament(){
-        int totalNumberOfTeams; //depending on how I use this variable I might not need the variable
-
-        //in the first place, just the TournamentBuilder.getNumberOfTeams
 
             TournamentBuilder.setNumberOfTeams(); //global total matches is set here
             gMatchCountDown = TournamentBuilder.getNumberOfTeams()/2;
             TournamentBuilder.setTotalPlayersOnTeam();
-            totalNumberOfTeams = TournamentBuilder.getNumberOfTeams();
             TeamsBuilder.createInitialTeamList();
             //System.out.println("Manual team initialization or automatic?"); //go with automatic first
             TeamsBuilder.addInfoToTeams();
@@ -36,20 +35,36 @@ public class TournamentInitializer {
     }
 
     private static void playTournament(){ // 2 rounds, 1 final round, 6 teams
-        InfoContextDisplay.displayPreMatchInformation();
-        Referee.updateMatchWithTeamScores();
-        InfoContextDisplay.displayTeamWinnerInformation();
-        MatchBuildUpdate.createNextTeamMatches();
+        System.out.println("total matches to play variable: "+ TournamentBuilder.getTotalMatchesToPlay());
+        System.out.println("total number of matches played so far variable: "+ gMatchesPlayed);
 
-        InfoContextDisplay.displayPreMatchInformation();
-        Referee.updateMatchWithTeamScores();
-        InfoContextDisplay.displayTeamWinnerInformation();
-        MatchBuildUpdate.createNextTeamMatches();
 
+            while (gMatchesPlayed < TournamentBuilder.getTotalMatchesToPlay() - 1) {
+                //System.out.println("1stTournamentInitializer - gMatchCountDown variable: "+gMatchCountDown);
+                if(((gMatchCountDown== 0)||(gMatchCountDown==1)) && (teamSittingOutCheck==false)){
+                    System.out.println("inside IF inside WHILE");
+                    InfoContextDisplay.displayPreMatchInformation();
+                    Referee.updateMatchWithTeamScores();
+                    InfoContextDisplay.displayTeamWinnerInformation();
+                    TournamentInitializer.checkIfToRestartTournament();
+                }
+                System.out.println("*****inside of while loop");
+                System.out.println("total matches to play variable: " + TournamentBuilder.getTotalMatchesToPlay());
+                System.out.println("total number of matches played so far variable: " + gMatchesPlayed);
+                InfoContextDisplay.displayPreMatchInformation();
+                Referee.updateMatchWithTeamScores();
+                InfoContextDisplay.displayTeamWinnerInformation();
+                MatchBuildUpdate.createNextTeamMatches();
+                //System.out.println("2ndTournamentInitializer - gMatchCountDown variable: "+gMatchCountDown);
+                System.out.println("total number of matches played so far " + gMatchesPlayed);
+            }
+
+        System.out.println("*****outside of while loop");
         InfoContextDisplay.displayPreMatchInformation();
         Referee.updateMatchWithTeamScores();
         InfoContextDisplay.displayTeamWinnerInformation();
         TournamentInitializer.checkIfToRestartTournament();
+
     }
 
     //not using this method yet

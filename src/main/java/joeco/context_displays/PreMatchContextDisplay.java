@@ -1,6 +1,7 @@
 package joeco.context_displays;
 
 import static joeco.tournamentsimulation_run.TournamentInitializer.gMatchCountDown;
+import static joeco.tournamentsimulation_run.TournamentInitializer.gMatchesPlayed;
 import static joeco.utils.SharedVariables.sittingOutTeam;
 import static joeco.utils.SharedVariables.teamSittingOutCheck;
 import static joeco.utils.SharedVariables.gListOfMatches;
@@ -13,11 +14,13 @@ public class PreMatchContextDisplay {
             for (int i = 0; gMatchCountDown > i; i++) {
                 System.out.println("Match " + (i + 1) + ": Team " + gListOfMatches.get(i).getTeamOne().getTeamNumber() + " vs Team "
                         + gListOfMatches.get(i).getTeamTwo().getTeamNumber());
+                gMatchesPlayed++;
             }
         }
         else{
                 System.out.println("Match " + (1) + ": Team " + gListOfMatches.get(0).getTeamOne().getTeamNumber() + " vs Team "
                         + gListOfMatches.get(0).getTeamTwo().getTeamNumber());
+            gMatchesPlayed++;
             }
         }
 

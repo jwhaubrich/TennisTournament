@@ -8,7 +8,7 @@ public class TournamentBuilder {
     private static int totalNumberOfTeams;
     private static int totalPlayersOnTeam;
     private static final Scanner input = new Scanner(System.in);
-    public static int gTotalMatches;
+    public static int gTotalMatchesToPlay;
     private static boolean numberOfTeamsSetCheck = false;
     private static boolean playersPerTeamCheck = false;
 
@@ -34,7 +34,7 @@ public class TournamentBuilder {
                 TournamentInitializer.gMatchCountDown = 1;
             }
         }
-        gTotalMatches = totalNumberOfTeams-1;
+        gTotalMatchesToPlay = totalNumberOfTeams-1;
     }
 
     public static void resetTeamInfo(){
@@ -71,6 +71,10 @@ public class TournamentBuilder {
 
     public static int getNumberOfTeams(){
         return totalNumberOfTeams;
+    }
+
+    public static int getTotalMatchesToPlay(){
+        return gTotalMatchesToPlay;
     }
 
 }

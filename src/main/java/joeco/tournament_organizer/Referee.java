@@ -1,6 +1,5 @@
 package joeco.tournament_organizer;
 
-import static joeco.tournament_configurations.TournamentBuilder.gTotalMatches;
 import static joeco.utils.SharedVariables.gListOfMatches;
 import joeco.tournament_configurations.TournamentBuilder;
 import joeco.tournament_configurations.MatchBuildUpdate;
