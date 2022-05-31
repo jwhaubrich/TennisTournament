@@ -4,7 +4,7 @@ import joeco.tournament_objects.SingleMatch;
 import joeco.tournament_organizer.Referee;
 
 import static joeco.tournament_organizer.Referee.getRandomizedTeamList;
-import static joeco.tournamentsimulation_run.TournamentInitializer.gMatchCountDown;
+import static joeco.tournament_exe.TournamentInitializer.gMatchCountDown;
 import static joeco.utils.SharedVariables.gListOfMatches;
 
 public class MatchBuilder {

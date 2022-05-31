@@ -10,19 +10,24 @@ java{
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
+/*
 jar{
     archiveBaseName = 'TennisTournament'
 
-    /*
-    manifest {
-        attributes 'Main-Class': "JoeCo.ExecuteProgram.SimpleCalculator"
-    }*/
 
-}
-/*
-application{
-   mainClass = 'JoeCo.ExecuteProgram.SimpleCalculator'
+    manifest {
+        attributes 'Main-Class': "joeco.tournament_exe.TournamentInitializer"
+    }
+
 }*/
+
+application{
+   mainClass = 'joeco.tournament_exe.TournamentInitializer'
+}
+
+run{
+    standardInput = System.in
+}
 
 repositories {
    mavenCentral()

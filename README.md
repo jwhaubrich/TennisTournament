@@ -54,12 +54,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Casio_calculator_JS-20WK_in_201901_002.jpg/340px-Casio_calculator_JS-20WK_in_201901_002.jpg)
+[![Product Name Screen Shot][product-screenshot]](https://www.topendsports.com/sport/tennis/images/tennis-tournament-pixabay.jpg)
 
-This project was developed to help users perform basic mathematical functions such as addition, subtraction, multiply, and divide. The functionality within the code is very basic to aid in execution of the program for the user. Upon execution of the main program the user will 
-1. Select which operation to perform.
-2. Enter the two numbers that they wish to use within the applicaiton.
-3. Decide if they want to continue.
+This project was developed to simulate a tennis tournament (or a tournament of any kind). The idea is that the user can enter in how many teams are playing and how many players are on each team. After that, the user can enter in scores for each team and match until a winner has been identified through the tournament. Upon execution of the main program the user will:
+1. Select how many teams will play.
+2. Select how many players are on each team.
+3. Matches between teams are randomly selected.
+4. The user can then enter in scores for each match until a winning team is identified.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -71,7 +72,6 @@ This project was developed to help users perform basic mathematical functions su
 * [Gradle: Version 7.4.2](https://gradle.org/)
 * [Groovy: Version 3.0.9](https://groovy-lang.org/)
 * [Ant: Version 1.10.11](https://ant.apache.org/)
-* [JVM: Version 1.8.0_301](https://www.java.com/en/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -80,26 +80,23 @@ This project was developed to help users perform basic mathematical functions su
 <!-- GETTING STARTED -->
 ## Getting Started
 
-First, we'll need to copy this repo to your machine, then running the application by creating a jar file. Please see the instructions that follow:
+First, we'll need to:
+1. Copy this repo to your machine.
+2. Run the application using the gradle wrapper. 
+
+Please see the instructions that follow:
 
 
 ### Running the Program
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/jwhaubrich/Simple-Calculator.git
+   git clone https://github.com/jwhaubrich/TennisTournament.git
    ```
-2. Navigate to local directory where the repo is located on your machine. In that same directory, run the following command to create jar file with Gradle.
+2. Navigate to local directory where the repo is located on your machine and double-click into the TennisTournament folder.
+3. In that same directory, run the following command to execute the main method inside the application:
    ```sh
-   ./gradlew jar
-   ```
-3. Change directories to SimpleCalculator>build>libs
-   ```sh
-   cd build/libs
-   ```
-4. Run the Simple Calculator program with:
-   ```sh
-   java -jar SimpleCalculatorWithGradle-1.0.2.jar 
+   ./gradlew run
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -125,12 +122,12 @@ Don't forget to give the project a star! Thanks again!
 
 Joe Haubrich - [@joe_haubrich](https://twitter.com/joe_haubrich) - jwhaubrich@gmail.com
 
-Project Link: [https://github.com/jwhaubrich/Simple-Calculator](https://github.com/jwhaubrich/Simple-Calculator)
+Project Link: [https://github.com/jwhaubrich/Simple-Calculator](https://github.com/jwhaubrich/TennisTournament)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[product-screenshot]: https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Casio_calculator_JS-20WK_in_201901_002.jpg/340px-Casio_calculator_JS-20WK_in_201901_002.jpg
+[product-screenshot]: https://www.topendsports.com/sport/tennis/images/tennis-tournament-pixabay.jpg
 [license-shield]: https://camo.githubusercontent.com/111148992d0253f8d5e36b62087d48a9eabb1d7244b2b7316214f47d5c9a8781/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6f74686e65696c647265772f426573742d524541444d452d54656d706c6174652e7376673f7374796c653d666f722d7468652d6261646765
 [license-url]: https://github.com/jwhaubrich/Simple-Calculator/blob/main/LICENSE

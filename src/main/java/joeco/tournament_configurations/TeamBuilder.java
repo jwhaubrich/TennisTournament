@@ -1,7 +1,7 @@
 package joeco.tournament_configurations;
 
 import joeco.tournament_objects.SingleTeam;
-import joeco.tournamentsimulation_run.TournamentInitializer;
+import joeco.tournament_exe.TournamentInitializer;
 
 import java.util.ArrayList;
 import java.util.Scanner;

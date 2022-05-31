@@ -1,4 +1,4 @@
-package joeco.tournamentsimulation_run;
+package joeco.tournament_exe;
 
 import joeco.tournament_configurations.*;
 import joeco.tournament_organizer.Referee;

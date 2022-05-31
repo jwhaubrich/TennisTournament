@@ -1,4 +1,4 @@
-package joeco.tournamentsimulation_run;
+package joeco.tournament_exe;
 
 import joeco.context_displays.InfoContextDisplay;
 import joeco.tournament_configurations.MatchUpdater;

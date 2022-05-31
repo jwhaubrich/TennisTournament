@@ -3,7 +3,7 @@ package joeco.tournament_configurations;
 import joeco.tournament_objects.SingleTeam;
 import java.util.ArrayList;
 import java.util.Scanner;
-import static joeco.tournamentsimulation_run.TournamentInitializer.gMatchCountDown;
+import static joeco.tournament_exe.TournamentInitializer.gMatchCountDown;
 import static joeco.utils.SharedVariables.gListOfMatches;
 
 
