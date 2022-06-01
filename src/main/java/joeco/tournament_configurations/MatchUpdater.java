@@ -1,5 +1,6 @@
 package joeco.tournament_configurations;
 
+import joeco.context_displays.MatchDisplay;
 import joeco.tournament_objects.SingleTeam;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,6 +18,7 @@ public class MatchUpdater {
         //how can I make it so the user is only able to select the number of matches that are available?
         Scanner input = new Scanner(System.in);
         int updateCounter = 0;
+        ArrayList<Integer> matchNumberEntered = new ArrayList<>();
 
         System.out.println("\nYou will now assign scores to each team, depending on each match.");
 
@@ -24,6 +26,7 @@ public class MatchUpdater {
             System.out.println("\nType out the match number for which teams to update: ");
 
             matchToUpdate = Integer.parseInt(input.nextLine()) - 1;
+            matchNumberEntered.add(matchToUpdate);
 
             if(gMatchCountDown!=0) {
                 if (0 <= matchToUpdate && matchToUpdate < gMatchCountDown) {
@@ -48,14 +51,17 @@ public class MatchUpdater {
                 scoreTeam2 = Integer.parseInt((input.nextLine()));
                 System.out.println("Setting scores for teams...");
 
+
                 MatchUpdater.updateTeamScoresInMatch();
                 MatchUpdater.updateWinningTeamListWithTeamInfo();
 
                 return;
             }
             updateCounter++;
+            MatchDisplay.displayMatchesWhenUpdating(updateCounter, matchNumberEntered);
         }
         gMatchCountDown = gListWinningTeams.size()/2;
+        matchNumberEntered.clear();
     }
 
     public static void updateTeamScoresInMatch(){

@@ -1,5 +1,6 @@
 package joeco.tournament_exe;
 
+import joeco.context_displays.MatchDisplay;
 import joeco.tournament_configurations.*;
 import joeco.tournament_organizer.Referee;
 import joeco.context_displays.InfoContextDisplay;
