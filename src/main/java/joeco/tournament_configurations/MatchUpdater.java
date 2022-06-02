@@ -18,7 +18,7 @@ public class MatchUpdater {
         //how can I make it so the user is only able to select the number of matches that are available?
         Scanner input = new Scanner(System.in);
         int updateCounter = 0;
-        ArrayList<Integer> matchNumberEntered = new ArrayList<>();
+        ArrayList<Integer> matchNumEnteredList = new ArrayList<>();
 
         System.out.println("\nYou will now assign scores to each team, depending on each match.");
 
@@ -26,7 +26,7 @@ public class MatchUpdater {
             System.out.println("\nType out the match number for which teams to update: ");
 
             matchToUpdate = Integer.parseInt(input.nextLine()) - 1;
-            matchNumberEntered.add(matchToUpdate);
+            matchNumEnteredList.add(matchToUpdate);
 
             if(gMatchCountDown!=0) {
                 if (0 <= matchToUpdate && matchToUpdate < gMatchCountDown) {
@@ -36,7 +36,6 @@ public class MatchUpdater {
                     System.out.println("What is the score for Team "
                             + gListOfMatches.get(matchToUpdate).getTeamTwo().getTeamNumber() + "?: ");
                     scoreTeam2 = Integer.parseInt((input.nextLine()));
-                    System.out.println("Setting scores for teams...");
 
                     MatchUpdater.updateTeamScoresInMatch();
                     MatchUpdater.updateWinningTeamListWithTeamInfo();
@@ -58,10 +57,11 @@ public class MatchUpdater {
                 return;
             }
             updateCounter++;
-            MatchDisplay.displayMatchesWhenUpdating(updateCounter, matchNumberEntered);
+            MatchDisplay.displayMatchesWhenUpdating(updateCounter, matchNumEnteredList);
+            MatchDisplay.continueUpdatingMatches(matchToUpdate);
         }
         gMatchCountDown = gListWinningTeams.size()/2;
-        matchNumberEntered.clear();
+        matchNumEnteredList.clear();
     }
 
     public static void updateTeamScoresInMatch(){

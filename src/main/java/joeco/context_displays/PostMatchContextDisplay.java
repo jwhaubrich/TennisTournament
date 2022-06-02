@@ -8,7 +8,7 @@ import static joeco.utils.SharedVariables.gListOfMatches;
 public class PostMatchContextDisplay {
 
     public static void displayTeamWinnerInformation() {
-        System.out.println("\n***Match Information with Team Winners***");
+        System.out.println("\n*****Match Information with Team Winners*****");
 
         if ((gMatchCountDown == 0) && !teamSittingOutCheck) {
             System.out.println("TEAM " + gListOfMatches.get(0).getWinningTeam() + " is the WINNER of the Tennis Tournament!");

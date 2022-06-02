@@ -1,6 +1,7 @@
 package joeco.tournament_exe;
 
 import joeco.context_displays.InfoContextDisplay;
+import joeco.context_displays.MatchDisplay;
 import joeco.tournament_configurations.MatchUpdater;
 import joeco.tournament_configurations.TeamUpdater;
 import joeco.tournament_organizer.Referee;
@@ -42,6 +43,7 @@ public class ReplayTrnChecker {
         MatchUpdater.clearMatchData();
         InfoContextDisplay.resetNumberOfRound();
         TournamentInitializer.gMatchesPlayed = 0;
+        MatchDisplay.matchesLeftToUpdate.clear();
 
         TournamentInitializer.initializeTennisTournament();
     }
