@@ -14,6 +14,9 @@ public class MatchUpdater {
     public static int scoreTeam1;
     public static int scoreTeam2;
 
+    private MatchUpdater() {
+    }
+
     public static void assignWinOrLossToTeams(){
         //how can I make it so the user is only able to select the number of matches that are available?
         Scanner input = new Scanner(System.in);

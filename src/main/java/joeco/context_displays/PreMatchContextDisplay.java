@@ -7,6 +7,9 @@ import static joeco.utils.SharedVariables.teamSittingOutCheck;
 import static joeco.utils.SharedVariables.gListOfMatches;
 
 public class PreMatchContextDisplay {
+    private PreMatchContextDisplay() {
+    }
+
     public static void displayTeamVsTeamMatch(){
         if(gMatchCountDown!=0) {
             for (int i = 0; gMatchCountDown > i; i++) {

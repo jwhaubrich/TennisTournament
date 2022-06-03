@@ -7,6 +7,9 @@ import static joeco.utils.SharedVariables.gListOfMatches;
 
 public class PostMatchContextDisplay {
 
+    private PostMatchContextDisplay() {
+    }
+
     public static void displayTeamWinnerInformation() {
         System.out.println("\n*****Match Information with Team Winners*****");
 

@@ -3,11 +3,15 @@ package joeco.tournament_configurations;
 import joeco.tournament_objects.SingleMatch;
 import joeco.tournament_organizer.Referee;
 
-import static joeco.tournament_organizer.Referee.getRandomizedTeamList;
 import static joeco.tournament_exe.TournamentInitializer.gMatchCountDown;
+import static joeco.tournament_organizer.Referee.getRandomizedTeamList;
 import static joeco.utils.SharedVariables.gListOfMatches;
 
 public class MatchBuilder {
+
+    private MatchBuilder() {
+    }
+
     public static void createNextTeamMatch(){
         gListOfMatches.clear();
         Referee.getRandomizedTeamList().clear();

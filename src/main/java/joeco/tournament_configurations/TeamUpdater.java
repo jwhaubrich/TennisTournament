@@ -10,6 +10,9 @@ public class TeamUpdater {
 
     public static int newTotalTeams;
 
+    private TeamUpdater() {
+    }
+
     public static void addInfoToTeams(){
         int numberOfTeamPlayers = TeamBuilder.getTotalPlayersOnTeam();
         int teamNumber = 1;

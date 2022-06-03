@@ -17,6 +17,9 @@ public class TeamBuilder {
     private static int totalPlayersOnTeam;
 
 
+    private TeamBuilder() {
+    }
+
     public static void setNumberOfTeams(){
 
         while(!numberOfTeamsSetCheck){

@@ -10,4 +10,6 @@ public class SharedVariables {
     public static boolean teamSittingOutCheck = false;
     public static ArrayList<SingleMatch> gListOfMatches = new ArrayList<>();
 
+    private SharedVariables() {
+    }
 }

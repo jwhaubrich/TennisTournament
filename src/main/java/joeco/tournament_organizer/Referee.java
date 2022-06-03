@@ -13,6 +13,10 @@ import java.util.Random;
 public class Referee {
     private static ArrayList<SingleTeam> randomizedTeamList = new ArrayList<>();
     private static int totalTeams = TeamBuilder.getNumberOfTeams();
+    public static ArrayList<SingleMatch> matchesLeftToUpdate;
+
+    private Referee() {
+    }
 
     public static void randomizeTeamsList(ArrayList<SingleTeam> initialTeamList){
         Random randomNumberCreator = new Random();
@@ -37,6 +41,7 @@ public class Referee {
 
         for(int i = 0; totalTeams > i; i = i + 2){
             gListOfMatches.add(new SingleMatch(randomizedTeamList.get(i), randomizedTeamList.get(i+1)));
+            matchesLeftToUpdate = new ArrayList<>(gListOfMatches);
         }
 
         for(int i = 0; gListOfMatches.size() > i; i++){

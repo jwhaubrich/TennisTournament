@@ -1,15 +1,14 @@
 package joeco.context_displays;
 
-import joeco.tournament_objects.SingleMatch;
-
 import java.util.ArrayList;
-import java.util.Collections;
 
+import static joeco.tournament_organizer.Referee.matchesLeftToUpdate;
 import static joeco.utils.SharedVariables.gListOfMatches;
 
 public class MatchDisplay {
 
-    public static ArrayList<SingleMatch> matchesLeftToUpdate = new ArrayList<>(gListOfMatches);
+    private MatchDisplay() {
+    }
 
     public static void displayMatchesWhenUpdating(int currentMatchSize, ArrayList<Integer> matchNumberList){
         System.out.println("\n*****Entering Scores Information*****");
@@ -40,8 +39,8 @@ public class MatchDisplay {
                     + matchesLeftToUpdate.get(i).getTeamOne().getTeamNumber() + " vs Team " + matchesLeftToUpdate.get(i).getTeamTwo().getTeamNumber());
         }
 
-        if(matchesLeftToUpdate.size()==0){
-            System.out.println("No matches left to update!");
+        if(matchesLeftToUpdate.isEmpty()){
+            System.out.println("No pending matches left to update!");
         }
     }
 

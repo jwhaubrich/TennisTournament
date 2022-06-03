@@ -1,9 +1,10 @@
 package joeco.tournament_exe;
 
-import joeco.context_displays.MatchDisplay;
-import joeco.tournament_configurations.*;
-import joeco.tournament_organizer.Referee;
 import joeco.context_displays.InfoContextDisplay;
+import joeco.tournament_configurations.MatchBuilder;
+import joeco.tournament_configurations.TeamBuilder;
+import joeco.tournament_configurations.TeamUpdater;
+import joeco.tournament_organizer.Referee;
 
 import static joeco.utils.SharedVariables.teamSittingOutCheck;
 

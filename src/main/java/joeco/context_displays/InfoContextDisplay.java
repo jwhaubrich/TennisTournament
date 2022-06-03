@@ -6,6 +6,9 @@ import static joeco.utils.SharedVariables.teamSittingOutCheck;
 public class InfoContextDisplay {
     private static int numberOfRound = 1;
 
+    private InfoContextDisplay() {
+    }
+
     public static void displayPreMatchInformation() {
         InfoContextDisplay.normalOrFinalRoundChecker();
         PreMatchContextDisplay.displayTeamVsTeamMatch();
