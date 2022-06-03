@@ -2,8 +2,10 @@ package joeco.tournament_configurations;
 
 import joeco.tournament_objects.SingleTeam;
 import joeco.tournament_exe.TournamentInitializer;
+import joeco.utils.SharedVariables;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class TeamBuilder {
@@ -15,6 +17,9 @@ public class TeamBuilder {
     public static int gTotalMatchesToPlay;
     private static boolean playersPerTeamCheck = false;
     private static int totalPlayersOnTeam;
+    private static boolean males = false;
+    private static boolean females = false;
+    private static boolean mixedGender = false;
 
 
     private TeamBuilder() {
@@ -66,6 +71,37 @@ public class TeamBuilder {
                 System.out.println("***Warning***: Please select 2 or 4.\n");
             }
         }
+    }
+
+    public static void malesOrFemalesCheck() {
+        boolean genderSetCheck = false;
+        String tournamentGender;
+
+        while(!genderSetCheck) {
+            System.out.println("Is the tournament for males, females, or mixed gender?");
+            tournamentGender = input.nextLine().toUpperCase(Locale.ROOT);
+
+            if (SharedVariables.GENDER_LIST.contains(tournamentGender)) {
+                if (tournamentGender.contains("MALES")) {
+                    TeamBuilder.setMalesAndFemales("MALES");
+                }
+                if (tournamentGender.contains("FEMALES")) {
+                    TeamBuilder.setMalesAndFemales("FEMALES");
+                }
+                if (tournamentGender.contains("MIXED GENDER")) {
+                    TeamBuilder.setMalesAndFemales("MIXED GENDER");
+                }
+                genderSetCheck = true;
+            }
+            else{
+                System.out.println("Please enter in males, females, or mixed gender");
+                genderSetCheck = false;
+            }
+        }
+    }
+
+    public static void setMalesAndFemales(String tournamentGender){
+
     }
 
     public static void createInitialTeamList(){
