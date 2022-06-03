@@ -11,7 +11,7 @@ public class SharedVariables {
     public static SingleTeam sittingOutTeam;
     public static boolean teamSittingOutCheck = false;
     public static ArrayList<SingleMatch> gListOfMatches = new ArrayList<>();
-    public static final List<String> GENDER_LIST = Arrays.asList("MALE", "FEMALE", "MIXED GENDER");
+    public static final List<String> GENDER_LIST = Arrays.asList("MALES", "FEMALES", "MIXED GENDER");
 
     private SharedVariables() {
     }

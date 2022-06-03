@@ -22,6 +22,7 @@ public class TournamentInitializer {
             gMatchCountDown = TeamBuilder.getNumberOfTeams()/2;
             TeamBuilder.setTotalPlayersOnTeam();
             TeamBuilder.createInitialTeamList();
+            TeamBuilder.malesOrFemalesCheck();
             TeamUpdater.addInfoToTeams();
             Referee.randomizeTeamsList(TeamBuilder.getTeamList());
             Referee.createInitialMatches();

@@ -17,9 +17,6 @@ public class TeamBuilder {
     public static int gTotalMatchesToPlay;
     private static boolean playersPerTeamCheck = false;
     private static int totalPlayersOnTeam;
-    private static boolean males = false;
-    private static boolean females = false;
-    private static boolean mixedGender = false;
 
 
     private TeamBuilder() {
@@ -83,14 +80,14 @@ public class TeamBuilder {
 
             if (SharedVariables.GENDER_LIST.contains(tournamentGender)) {
                 if (tournamentGender.contains("MALES")) {
-                    TeamBuilder.setMalesAndFemales("MALES");
+                    TeamBuilder.setMales();
                 }
                 if (tournamentGender.contains("FEMALES")) {
-                    TeamBuilder.setMalesAndFemales("FEMALES");
+                    TeamBuilder.setFemales();
                 }
-                if (tournamentGender.contains("MIXED GENDER")) {
-                    TeamBuilder.setMalesAndFemales("MIXED GENDER");
-                }
+//                if (tournamentGender.contains("MIXED GENDER")) {
+//                    TeamBuilder.setMixedGender();
+//                }
                 genderSetCheck = true;
             }
             else{
@@ -100,13 +97,50 @@ public class TeamBuilder {
         }
     }
 
-    public static void setMalesAndFemales(String tournamentGender){
 
+    public static void setMales(){
+    /*if two or four players per team, set that many individuals for this gender*/
+        if (totalPlayersOnTeam == 2) {
+            for(int i = 0; teamList.size() > i; i++){
+                teamList.get(0).setNumberOfMales(2);
+            }
+            for(int i = 0; teamList.size() > i; i++){
+                System.out.println("Number of males per team are: "+teamList.get(0).getNumberOfMales());
+            }
+        }
+        if (totalPlayersOnTeam == 4) {
+            for(int i = 0; teamList.size() > i; i++){
+                teamList.get(0).setNumberOfMales(4);
+            }
+        }
     }
+
+    public static void setFemales(){
+        if (totalPlayersOnTeam == 2) {
+            for(int i = 0; teamList.size() > i; i++){
+                teamList.get(0).setNumberOfFemales(2);
+            }
+
+        }
+        if (totalPlayersOnTeam == 4) {
+            for(int i = 0; teamList.size() > i; i++){
+                teamList.get(0).setNumberOfFemales(4);
+            }
+            for(int i = 0; teamList.size() > i; i++){
+                System.out.println("Number of females per team are: "+teamList.get(0).getNumberOfMales());
+            }
+        }
+    }
+
+//    public static void setMixedGender(){
+//
+//    }
 
     public static void createInitialTeamList(){
         for(int i = 1; TeamBuilder.getNumberOfTeams() >= i; i++){
             teamList.add(new SingleTeam(i));
+            teamList.get(i-1).setNumberOfIndividuals(totalPlayersOnTeam);
+            System.out.println("total players on each team: "+teamList.get(i-1).getNumberOfIndividuals());
         }
     }
 
