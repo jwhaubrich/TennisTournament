@@ -35,7 +35,7 @@ public class TeamBuilder {
                 totalNumberOfTeams = 1;
             }
 
-            if (totalNumberOfTeams % 2 == 0) { //this statement ensures that the user enters even number
+            if (totalNumberOfTeams % 2 == 0) {
                 numberOfTeamsSetCheck = true;
             } else {
                 System.out.println("***Warning***: Please enter an even number.\n");
@@ -102,12 +102,12 @@ public class TeamBuilder {
     public static void setMales(){
         if (totalPlayersOnTeam == 2) {
             for(int i = 0; teamList.size() > i; i++){
-                teamList.get(0).setNumberOfMales(2);
+                teamList.get(i).setNumberOfMales(2);
             }
         }
         if (totalPlayersOnTeam == 4) {
             for(int i = 0; teamList.size() > i; i++){
-                teamList.get(0).setNumberOfMales(4);
+                teamList.get(i).setNumberOfMales(4);
             }
         }
     }
@@ -115,13 +115,13 @@ public class TeamBuilder {
     public static void setFemales(){
         if (totalPlayersOnTeam == 2) {
             for(int i = 0; teamList.size() > i; i++){
-                teamList.get(0).setNumberOfFemales(2);
+                teamList.get(i).setNumberOfFemales(2);
             }
-
         }
+
         if (totalPlayersOnTeam == 4) {
             for(int i = 0; teamList.size() > i; i++){
-                teamList.get(0).setNumberOfFemales(4);
+                teamList.get(i).setNumberOfFemales(4);
             }
         }
     }
@@ -175,12 +175,6 @@ public class TeamBuilder {
                     totalMalesAndFemales = teamList.get(i).getNumberOfMales() + teamList.get(i).getNumberOfFemales();
                 }
             }
-//            for (int x = 0; teamList.size() > x; x++) {
-//                System.out.println("team number: "+teamList.get(x).getTeamNumber());
-//                System.out.println("number of players on each team: "+teamList.get(x).getNumberOfIndividuals());
-//                System.out.println("number of males on each team: "+teamList.get(x).getNumberOfMales());
-//                System.out.println("number of females on each team: "+teamList.get(x).getNumberOfFemales());
-//              }
         }
     }
 

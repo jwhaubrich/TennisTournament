@@ -11,10 +11,10 @@ public class PostMatchContextDisplay {
     }
 
     public static void displayTeamWinnerInformation() {
-        System.out.println("\n*****Match Information with Team Winners*****");
+        System.out.println("\n\n\n*****Match Information with Team Winners*****");
 
         if ((gMatchCountDown == 0) && !teamSittingOutCheck) {
-            System.out.println("TEAM " + gListOfMatches.get(0).getWinningTeam() + " is the WINNER of the Tennis Tournament!");
+            System.out.println("TEAM " + gListOfMatches.get(0).getWinningTeam() + " is the WINNER of the Tennis Tournament!\n\n\n");
         } else {
             for (int i = 0; gListOfMatches.size() > i; i++) {
                 System.out.println("Match " + gListOfMatches.get(i).getMatchNumber() + ": Team "
