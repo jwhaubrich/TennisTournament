@@ -188,7 +188,6 @@ public class TeamBuilder {
         for(int i = 1; TeamBuilder.getNumberOfTeams() >= i; i++){
             teamList.add(new SingleTeam(i));
             teamList.get(i-1).setNumberOfIndividuals(totalPlayersOnTeam);
-            System.out.println("total players on each team: "+teamList.get(i-1).getNumberOfIndividuals());
         }
     }
 

@@ -34,16 +34,19 @@ public class TournamentInitializer {
             while (gMatchesPlayed < TeamBuilder.getTotalMatchesToPlay() - 1) {
 
                 if(((gMatchCountDown== 0)||(gMatchCountDown==1)) && (!teamSittingOutCheck)){
+                    InfoContextDisplay.checkIfDisplayTeamIndividuals();
                     InfoContextDisplay.displayPreMatchInformation();
                     Referee.updateMatchWithTeamScores();
                     InfoContextDisplay.displayTeamWinnerInformation();
                     ReplayTrnChecker.checkIfToRestartTournament();
                 }
+                InfoContextDisplay.checkIfDisplayTeamIndividuals();
                 InfoContextDisplay.displayPreMatchInformation();
                 Referee.updateMatchWithTeamScores();
                 InfoContextDisplay.displayTeamWinnerInformation();
                 MatchBuilder.createNextTeamMatch();
             }
+        InfoContextDisplay.checkIfDisplayTeamIndividuals();
         InfoContextDisplay.displayPreMatchInformation();
         Referee.updateMatchWithTeamScores();
         InfoContextDisplay.displayTeamWinnerInformation();
