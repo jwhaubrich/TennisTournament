@@ -6,6 +6,7 @@ import joeco.utils.SharedVariables;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Random;
 import java.util.Scanner;
 
 public class TeamBuilder {
@@ -85,9 +86,9 @@ public class TeamBuilder {
                 if (tournamentGender.contains("FEMALES")) {
                     TeamBuilder.setFemales();
                 }
-//                if (tournamentGender.contains("MIXED GENDER")) {
-//                    TeamBuilder.setMixedGender();
-//                }
+                if (tournamentGender.contains("MIXED GENDER")) {
+                    TeamBuilder.setMixedGender();
+                }
                 genderSetCheck = true;
             }
             else{
@@ -99,13 +100,9 @@ public class TeamBuilder {
 
 
     public static void setMales(){
-    /*if two or four players per team, set that many individuals for this gender*/
         if (totalPlayersOnTeam == 2) {
             for(int i = 0; teamList.size() > i; i++){
                 teamList.get(0).setNumberOfMales(2);
-            }
-            for(int i = 0; teamList.size() > i; i++){
-                System.out.println("Number of males per team are: "+teamList.get(0).getNumberOfMales());
             }
         }
         if (totalPlayersOnTeam == 4) {
@@ -126,15 +123,66 @@ public class TeamBuilder {
             for(int i = 0; teamList.size() > i; i++){
                 teamList.get(0).setNumberOfFemales(4);
             }
-            for(int i = 0; teamList.size() > i; i++){
-                System.out.println("Number of females per team are: "+teamList.get(0).getNumberOfMales());
-            }
         }
     }
 
-//    public static void setMixedGender(){
-//
-//    }
+    public static void setMixedGender(){
+        Random randomMOrFSelector = new Random();
+        Random randNum2PlayersSelector = new Random();
+        Random randNum4PlayersSelector = new Random();
+        int malesOrFemales;
+        int randomNumOf2Players;
+        int randomNumOf4Players;
+        int totalMalesAndFemales;
+
+        if (totalPlayersOnTeam == 2) {
+            for(int i = 0; teamList.size() > i; i++){
+                totalMalesAndFemales = 0;
+                while(totalMalesAndFemales != 2){
+                    malesOrFemales = randomMOrFSelector.nextInt(2);
+                    randomNumOf2Players = randNum2PlayersSelector.nextInt(2)+1;
+                    switch(malesOrFemales){
+                        case 0:
+                            teamList.get(i).setNumberOfMales(randomNumOf2Players);
+                            teamList.get(i).setNumberOfFemales(2-randomNumOf2Players);
+                            break;
+                        case 1:
+                            teamList.get(i).setNumberOfFemales(randomNumOf2Players);
+                            teamList.get(i).setNumberOfMales(2-randomNumOf2Players);
+                            break;
+                    }
+                    totalMalesAndFemales = teamList.get(i).getNumberOfMales() + teamList.get(i).getNumberOfFemales();
+                }
+            }
+        }
+
+        if (totalPlayersOnTeam == 4) {
+            for(int i = 0; teamList.size() > i; i++){
+                totalMalesAndFemales = 0;
+                while(totalMalesAndFemales != 4){
+                    malesOrFemales = randomMOrFSelector.nextInt(4);
+                    randomNumOf4Players = randNum4PlayersSelector.nextInt(4)+1;
+                    switch(malesOrFemales){
+                        case 0:
+                            teamList.get(i).setNumberOfMales(randomNumOf4Players);
+                            teamList.get(i).setNumberOfFemales(4-randomNumOf4Players);
+                            break;
+                        case 1:
+                            teamList.get(i).setNumberOfFemales(randomNumOf4Players);
+                            teamList.get(i).setNumberOfMales(4-randomNumOf4Players);
+                            break;
+                    }
+                    totalMalesAndFemales = teamList.get(i).getNumberOfMales() + teamList.get(i).getNumberOfFemales();
+                }
+            }
+//            for (int x = 0; teamList.size() > x; x++) {
+//                System.out.println("team number: "+teamList.get(x).getTeamNumber());
+//                System.out.println("number of players on each team: "+teamList.get(x).getNumberOfIndividuals());
+//                System.out.println("number of males on each team: "+teamList.get(x).getNumberOfMales());
+//                System.out.println("number of females on each team: "+teamList.get(x).getNumberOfFemales());
+//              }
+        }
+    }
 
     public static void createInitialTeamList(){
         for(int i = 1; TeamBuilder.getNumberOfTeams() >= i; i++){
