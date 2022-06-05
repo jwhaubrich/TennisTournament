@@ -77,13 +77,14 @@ public class TeamBuilder {
 
         while(!genderSetCheck) {
             System.out.println("Is the tournament for males, females, or mixed gender?");
+            System.out.println("Enter 1 for males, 2 for females, or mixed gender.");
             tournamentGender = input.nextLine().toUpperCase(Locale.ROOT);
 
             if (SharedVariables.GENDER_LIST.contains(tournamentGender)) {
-                if (tournamentGender.contains("MALES")) {
+                if (tournamentGender.contains("1")) {
                     TeamBuilder.setMales();
                 }
-                if (tournamentGender.contains("FEMALES")) {
+                if (tournamentGender.contains("2")) {
                     TeamBuilder.setFemales();
                 }
                 if (tournamentGender.contains("MIXED GENDER")) {
@@ -92,7 +93,7 @@ public class TeamBuilder {
                 genderSetCheck = true;
             }
             else{
-                System.out.println("Please enter in males, females, or mixed gender");
+                System.out.println("Please enter 1 for males, 2 for females, or mixed gender");
                 genderSetCheck = false;
             }
         }
