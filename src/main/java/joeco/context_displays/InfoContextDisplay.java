@@ -36,7 +36,7 @@ public class InfoContextDisplay {
 
     public static void checkIfDisplayTeamIndividuals(){
         int teamToCheck = 0;
-        boolean enteredOneorTwo = false;
+        boolean enteredOneOrTwo = false;
         Scanner input = new Scanner(System.in);
 
         System.out.println("\n*****These are the initial matches and teams*****\n" +
@@ -44,14 +44,14 @@ public class InfoContextDisplay {
 
         InfoContextDisplay.displayMatchAndTeamInfo();
 
-        while(!enteredOneorTwo) {
+        while(!enteredOneOrTwo) {
             try {
                 teamToCheck = Integer.parseInt((input.nextLine()));
             } catch (NumberFormatException e) {
                 System.out.println("Type a number next time.");
             }
             if(teamToCheck == 1|| teamToCheck == 2){
-                enteredOneorTwo = true;
+                enteredOneOrTwo = true;
                 if (teamToCheck == 1) {
                     InfoContextDisplay.displayTeamIndividuals();
                 }

@@ -45,7 +45,6 @@ public class ReplayTrnChecker {
         MatchUpdater.clearMatchData();
         InfoContextDisplay.resetNumberOfRound();
         TournamentInitializer.gMatchesPlayed = 0;
-        //MatchDisplay.matchesLeftToUpdate.clear();
 
         TournamentInitializer.initializeTennisTournament();
     }
